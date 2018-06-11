@@ -1,29 +1,51 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
-
-
 class Categories extends Component {
-  getCategories() {
-    axios.get('https://decath-product-api.herokuapp.com/categories')
-    .then((response) => response.data.forEach(categorie => this.printCat(categorie.id)))
+  constructor(props){
+    super(props);
+    this.state = {
+      listCategories: []
+    }
   }
 
-  printCat(oneCategorie) {
-    console.log(oneCategorie);
-    return (
-    <div>
-      <h5>test</h5>
-    </div>
-    )
+  componentDidMount(){
+    axios.get('https://decath-product-api.herokuapp.com/categories')
+    .then((response) => this.setState({listCategories: response.data}))
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if (prevProps.listCategories !== this.props.listCategories) {
+      this.print1line()
+    }
+  }
+
+  print1line(){
+    return this.state.listCategories.map((oneCategory, index) => {
+      return(
+        <tr>
+          <td key={index}>{oneCategory.label}</td>
+          <td>{oneCategory.id}</td>
+        </tr>
+      )
+    })
   }
 
   render () {
     return (
-    <div>
-        <h1> Hello Julien</h1>
-    {this.getCategories()}
+    <div id="page_container" className="col-10 offset-1">
+      <h1 className="pb-3">Pick a category</h1>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Category name</th>
+            <th>Category UUID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.print1line()}
+        </tbody>
+      </table>
     </div>
     )
   }
