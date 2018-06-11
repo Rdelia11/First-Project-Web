@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Categories from './modules/categories/Categories'
+import Categories from './modules/categories/categories'
 
 class App extends Component {
   render() {
