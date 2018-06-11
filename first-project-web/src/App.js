@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import LocalRouter from './modules/router/router.js';
 import Navbar from './modules/navbar/navbar';
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
-      
+        <LocalRouter />
       </div>
     );
   }
