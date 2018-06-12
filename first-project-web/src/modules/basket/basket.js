@@ -19,7 +19,7 @@ class Basket extends Component {
     const url="https://www.decathlon.fr/media/"+this.state.productsInBasket[0].image_path;
     return (
 
-      <div id="page_container" className="col-8 offset-2" >
+      <div id="page_container" className="col-8 offset-2">
         <div className="titleBasket">My order </div>
         <table className="table">
           <thead className="tableHeader">
