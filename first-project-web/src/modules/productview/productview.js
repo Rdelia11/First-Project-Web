@@ -1,19 +1,31 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 
+
 class ProductCard extends Component {
   render() {
+    const url="https://www.decathlon.fr/media/"+this.props.product.image_path;
     return (
       <div>
-        {this.props.product.title}
-        {this.props.product.description}
-        {this.props.product.image_path}
-        {this.props.product.min_price}
-        {this.props.product.rating}
+      <h1>Product detail</h1>
+      <div id="container_ProductCard">
+        <div id="child_image">
+          <img src={url}/>
+        </div>
+        <div id="child_blocInfo">
+          <h4>{this.props.product.title}</h4>
+          <p>{this.props.product.description}</p>
+          <hr></hr>
+          <span id="price">{this.props.product.min_price} €</span>
+          <p>Customer rating : {this.props.product.rating} /5</p>
+          <a href="#" className="btn btn-primary">Add to cart &gt;</a>
+        </div>
       </div>
+    </div>
     )
   }
 }
+
 
 class ProductView extends Component {
   constructor(props){
@@ -28,14 +40,9 @@ class ProductView extends Component {
     .then((response) => this.setState({productView: response.data}))
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (prevProps.productView !== this.props.productView) {
-      this.print1line()
-    }
-  }
+ 
 
-
-  render () {
+  render() {
     console.log(this.state.productView);
     return (
     <div id="page_container" className="col-10 offset-1">
@@ -43,7 +50,6 @@ class ProductView extends Component {
     </div>
     )
   }
-
 }
 
 export default ProductView;

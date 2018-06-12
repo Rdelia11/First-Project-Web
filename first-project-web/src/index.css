@@ -71,3 +71,35 @@ body {
 #page_container{
   padding-top:80px;
 }
+
+#container_ProductCard{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+#child_image{
+  padding:25px;
+  min-width:25%;
+}
+
+#child_blocInfo{
+  padding:25px;
+  text-align:left;
+  min-width:25%;
+}
+
+#price{
+  font-size:24px;
+  font-weight:600;
+}
+
+.btn-primary{
+  background-color:#0082C3;
+}
+
+.btn-primary:hover{
+  background-color:#04689A;
+}
