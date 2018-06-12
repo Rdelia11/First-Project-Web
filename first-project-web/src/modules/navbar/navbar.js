@@ -11,7 +11,8 @@ function Navbar(props){
       </div>
       <div id="container">
         <div id="connectButton">
-          <button type="button" className="btn btn-outline-light">Login</button>
+          <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark">
+          </div>
         </div>
         <div id="logged">
           <span id="connected">Hello firstName</span>
@@ -24,5 +25,9 @@ function Navbar(props){
     </div>
   );
 }
+
+
+
+
 
 export default Navbar;
