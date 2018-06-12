@@ -33,13 +33,13 @@ class Categories extends Component {
 
   render () {
     return (
-    <div id="page_container" className="col-10 offset-1">
-      <h1 className="pb-3">Pick a category</h1>
-      <table className="table">
+    <div>
+      <h1> Hello Julien</h1>
+      <table>
         <thead>
           <tr>
-            <th>Category name</th>
-            <th>Category UUID</th>
+            <td>Category name</td>
+            <td>Category UUID</td>
           </tr>
         </thead>
         <tbody>

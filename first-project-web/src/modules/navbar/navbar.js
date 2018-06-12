@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 function Navbar(props){
   return(
-    <div id="navbar">
+    <div id="navbar" className="fixed-top">
       <div id="home">
         <i className="fas fa-home"></i>
       </div>
