@@ -72,14 +72,34 @@ body {
   padding-top:80px;
 }
 
+.titleBasket{
+  height: 60px;
+  font-weight:bold;
+  font-size: 25px;
+}
+
+.table{
+}
+
 .tableHeader{
   font-weight: bold;
 }
 
-.basket{
-  width: 500px;
-  height: auto;
+.tableFoot{
+  font-weight: bold;
+  font-style: italic;
 }
+
+.zoomImage{
+   width:20px;
+}
+
+.zoomImage:hover{
+  transform: scale(2.3);
+}
+
+
+
 
 #container_ProductCard{
   width:100%;
