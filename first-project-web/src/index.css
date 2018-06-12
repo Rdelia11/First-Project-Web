@@ -72,6 +72,14 @@ body {
   padding-top:80px;
 }
 
+.tableHeader{
+  font-weight: bold;
+}
+
+.basket{
+  width: 500px;
+  height: auto;
+
 #container_ProductCard{
   width:100%;
   display:flex;
@@ -102,4 +110,5 @@ body {
 
 .btn-primary:hover{
   background-color:#04689A;
+
 }
