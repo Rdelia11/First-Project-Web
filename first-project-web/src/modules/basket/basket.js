@@ -1,20 +1,33 @@
 import React, {Component} from 'react';
+import Store from './../../store/store.js'
+import {mapStateToProps} from './../../store/basket/selector.js'
+import {cartAction} from './../../store/basket/handlers.js'
+import {connect} from 'react-redux';
+
+class ViewOneArticle extends Component {
+  render() {
+    return (
+      <tr>
+        <td>{this.props.article.title}</td>
+        <td>{this.props.article.decathlon_id}</td>
+        <td>{this.props.article.min_price} €</td>
+        <td>
+          <button>-</button>
+          {this.props.article.quantity}
+          <button onClick={ () => this.props.addqte(this.props.article.decathlon_id)}>+</button>
+        </td>
+        <td><img src="./bin.png" alt="bin" width="15px"></img></td>
+        <td>{(this.props.article.min_price*this.props.article.quantity)}</td>
+      </tr>
+    )
+  }
+}
+
+const ViewOneArticleConnected = connect(null, cartAction)(ViewOneArticle)
 
 class Basket extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      productsInBasket : [{
-        title: "Corne chasse 14cm",
-        decathlon_id: 8282689,
-        min_price: 9.99,
-        quantity: 2,
-        image_path: "828/8282689/zoom_52fc3fd48aac4f30a127e90388958eb6.jpg",
-      }]
-    }
-  }
   render() {
-    console.log(this.state)
+    console.log(this.props)
     return (
       <div>
         <h2>This is the basket !</h2>
@@ -31,14 +44,9 @@ class Basket extends Component {
               </tr>
             </thead>
             <tbody className="tableBody">
-              <tr>
-                <td>{this.state.productsInBasket[0].title}</td>
-                <td>{this.state.productsInBasket[0].decathlon_id}</td>
-                <td>{this.state.productsInBasket[0].min_price} €</td>
-                <td>{this.state.productsInBasket[0].quantity}</td>
-                <td><img src="./bin.png" alt="bin" width="15px"></img></td>
-                <td>{(this.state.productsInBasket[0].min_price*this.state.productsInBasket[0].quantity)}</td>
-              </tr>
+              {this.props.productsInBasket.map(onearticle =>
+                <ViewOneArticleConnected article={onearticle} />
+              )}
             </tbody>
           </table>
         </container>
@@ -46,4 +54,4 @@ class Basket extends Component {
     )
   }}
 
-export default Basket;
+export default connect(mapStateToProps, cartAction)(Basket);
