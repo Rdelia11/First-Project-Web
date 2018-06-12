@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-let signedIn=false;
+
 
 
 
 window.googleConnectCallback = function(googleUser) {
 
   // Useful data for your client-side scripts:
-signedIn=true;
+
   const profile = googleUser.getBasicProfile();
   console.log("ID: " + profile.getId()); // Don't send this directly to your server!
   console.log('Full Name: ' + profile.getName());
