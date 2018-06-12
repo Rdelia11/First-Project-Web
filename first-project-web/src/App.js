@@ -14,10 +14,6 @@ class App extends Component {
 
         <Navbar/>
         <LocalRouter />
-        
-
-        <Categories />
-
       </div>
     );
   }
