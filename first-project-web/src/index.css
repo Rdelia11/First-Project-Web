@@ -17,7 +17,16 @@ body {
 #navbar a{
   color:white;
 }
-
+.bottom-right {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 #home{
   padding:10px;
   width:50px;

@@ -18,6 +18,7 @@ function Navbar(props){
         </div>
         <div id="cart">
           <a href="/basket"><i className="fas fa-shopping-cart"></i></a>
+          <div className="bottom-right">&nbsp;1&nbsp;</div>
         </div>
       </div>
     </div>
