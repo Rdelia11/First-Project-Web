@@ -67,3 +67,12 @@ body {
 #page_container{
   padding-top:80px;
 }
+
+.tableHeader{
+  font-weight: bold;
+}
+
+.basket{
+  width: 500px;
+  height: auto;
+}
