@@ -11,17 +11,23 @@ function Navbar(props){
       </div>
       <div id="container">
         <div id="connectButton">
-          <button type="button" className="btn btn-outline-light">Login</button>
+          <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark">
+          </div>
         </div>
         <div id="logged">
           <span id="connected">Hello firstName</span>
         </div>
         <div id="cart">
           <a href="/basket"><i className="fas fa-shopping-cart"></i></a>
+          <div className="bottom-right">&nbsp;1&nbsp;</div>
         </div>
       </div>
     </div>
   );
 }
+
+
+
+
 
 export default Navbar;
