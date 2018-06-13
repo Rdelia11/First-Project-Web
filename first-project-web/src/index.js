@@ -8,9 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 window.googleConnectCallback = function(googleUser) {
-
   // Useful data for your client-side scripts:
-
   const profile = googleUser.getBasicProfile();
   console.log("ID: " + profile.getId()); // Don't send this directly to your server!
   console.log('Full Name: ' + profile.getName());
@@ -18,11 +16,16 @@ window.googleConnectCallback = function(googleUser) {
   console.log('Family Name: ' + profile.getFamilyName());
   console.log("Image URL: " + profile.getImageUrl());
   console.log("Email: " + profile.getEmail());
-
   // The ID token you need to pass to your backend:
   const id_token = googleUser.getAuthResponse().id_token;
   //console.log("ID Token: " + id_token);
 };
+
+window.onscroll = function(){
+  console.log("scrolled");
+}
+
+
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 registerServiceWorker();
