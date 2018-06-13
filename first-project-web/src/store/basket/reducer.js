@@ -42,14 +42,7 @@ function deleteOneItem(products, id) {
 }
 
 function RemoveItem(products, id) {
-  return products.map(
-    function (oneProduct) {
-      if (oneProduct.decathlon_id !== id) {
-        return {oneProduct}
-      }
-    }
 
-  )
 }
 
 const BasketReducer = (state = initialState, action) => {
