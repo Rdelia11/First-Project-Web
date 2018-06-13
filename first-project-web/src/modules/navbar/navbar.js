@@ -6,6 +6,10 @@ import {
 } from 'react-router-dom';
 
 class Navbar extends Component{
+  constructor(props){
+    super(props);
+    console.log(this.props.state);
+  }
 
   howmanyArticleInBasket(){
     let nbArticleInBasket = 0;
@@ -14,6 +18,7 @@ class Navbar extends Component{
   }
 
   render (){
+
     return(
       <div id="navbar" className="fixed-top">
         <div id="home">
@@ -23,14 +28,17 @@ class Navbar extends Component{
           <img src={"https://nameless-cliffs-89719.herokuapp.com/images/logo.png"} width="100" alt="logo decathlon"/>
         </div>
         <div id="container">
+
+
+
           <div id="connectButton">
-            {/* <GoogleLogin clientId="975507228152-s6o2o4cnih74js8prhaoru6bhnj152lk.apps.googleusercontent.com" buttonText="Login" onSuccess={responseGoogle} onFailure={responseGoogle}/> */}
             <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark">
             </div>
           </div>
-          <div id="logged">
-            <span id="connected">Hello firstName</span>
-          </div>
+
+
+
+
           <div id="cart">
             <Link to="/basket"><i className="fas fa-shopping-cart"></i></Link>
             <div className="bottom-right">&nbsp;{this.howmanyArticleInBasket()}&nbsp;</div>

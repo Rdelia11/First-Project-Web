@@ -20,7 +20,8 @@ const initialState = {
     quantity: 2,
     image_path: "828/8282689/zoom_52fc3fd48aac4f30a127e90388958eb6.jpg",
   }
-]
+],
+loggedIn:false
 }
 
 function addOneItem(products, id) {
@@ -64,6 +65,11 @@ const BasketReducer = (state = initialState, action) => {
         ...state,
         productsInBasket: RemoveItem(state.productsInBasket,action.id)
       };
+
+      case 'LOGIN':
+        return {
+          ...state,loggedIn:true
+        };
 
     default:
       return state
