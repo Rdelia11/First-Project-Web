@@ -4,24 +4,30 @@ function Navbar(props){
   return(
     <div id="navbar" className="fixed-top">
       <div id="home">
-        <i className="fas fa-home"></i>
+        <a href="/"><i className="fas fa-home"></i></a>
       </div>
       <div id="logo">
         <img src={"https://nameless-cliffs-89719.herokuapp.com/images/logo.png"} width="100" alt="logo decathlon"/>
       </div>
       <div id="container">
         <div id="connectButton">
-          <button type="button" className="btn btn-outline-light">Login</button>
+          <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark">
+          </div>
         </div>
         <div id="logged">
           <span id="connected">Hello firstName</span>
         </div>
         <div id="cart">
-          <i className="fas fa-shopping-cart"></i>
+          <a href="/basket"><i className="fas fa-shopping-cart"></i></a>
+          <div className="bottom-right">&nbsp;1&nbsp;</div>
         </div>
       </div>
     </div>
   );
 }
+
+
+
+
 
 export default Navbar;

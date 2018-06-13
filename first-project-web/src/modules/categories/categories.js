@@ -24,7 +24,11 @@ class Categories extends Component {
     return this.state.listCategories.map((oneCategory, index) => {
       return(
         <tr>
-          <td key={index}>{oneCategory.label}</td>
+          <td key={index}>
+            <a href={`/products/${oneCategory.id}`}>
+              {oneCategory.label}
+            </a>
+          </td>
           <td>{oneCategory.id}</td>
         </tr>
       )
