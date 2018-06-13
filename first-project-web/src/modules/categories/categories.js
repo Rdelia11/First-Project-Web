@@ -14,11 +14,11 @@ class Categories extends Component {
     .then((response) => this.setState({listCategories: response.data}))
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (prevProps.listCategories !== this.props.listCategories) {
-      this.print1line()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState){
+  //   if (prevProps.listCategories !== this.props.listCategories) {
+  //     this.print1line()
+  //   }
+  // }
 
   print1line(){
     return this.state.listCategories.map((oneCategory, index) => {
