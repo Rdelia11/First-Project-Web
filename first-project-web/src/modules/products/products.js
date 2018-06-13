@@ -5,13 +5,6 @@ import {mapStateToProps} from './../../store/basket/selector.js'
 import {cartAction} from './../../store/basket/handlers.js'
 import {connect} from 'react-redux';
 
-const Product = ({ match }) => (
-  <div>
-    <h2>This is the product</h2>
-    ${match.url};
-  </div>
-)
-
 class Products extends Component {
   constructor(props){
     super(props);
