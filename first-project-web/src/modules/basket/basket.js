@@ -58,7 +58,7 @@ class Basket extends Component {
               <td></td>
               <td></td>
               <td>Total</td>
-              <td>{(this.state.productsInBasket[0].min_price*this.state.productsInBasket[0].quantity)} €</td>
+              <td> €</td>
             </tr>
             </tfoot>
           </table>
