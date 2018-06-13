@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {mapStateToProps} from './../../store/basket/selector.js'
 import {connect} from 'react-redux';
-
+import {
+  Link
+} from 'react-router-dom';
 
 class Navbar extends Component{
 
@@ -15,7 +17,7 @@ class Navbar extends Component{
     return(
       <div id="navbar" className="fixed-top">
         <div id="home">
-          <a href="/"><i className="fas fa-home"></i></a>
+          <Link to="/"><i className="fas fa-home"></i></Link>
         </div>
         <div id="logo">
           <img src={"https://nameless-cliffs-89719.herokuapp.com/images/logo.png"} width="100" alt="logo decathlon"/>
@@ -30,7 +32,7 @@ class Navbar extends Component{
             <span id="connected">Hello firstName</span>
           </div>
           <div id="cart">
-            <a href="/basket"><i className="fas fa-shopping-cart"></i></a>
+            <Link to="/basket"><i className="fas fa-shopping-cart"></i></Link>
             <div className="bottom-right">&nbsp;{this.howmanyArticleInBasket()}&nbsp;</div>
           </div>
         </div>
