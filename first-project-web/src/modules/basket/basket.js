@@ -18,8 +18,7 @@ class ViewOneArticle extends Component {
           {this.props.article.quantity}
           <button onClick={ () => this.props.addqte(this.props.article.decathlon_id)}>+</button>
         </td>
-        <td><img src="./bin.png" alt="bin" width="15px"></img>
-        <button onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}>test</button>
+        <td><img src="./bin.png" alt="bin" width="15px" id="imgbin" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></img>
       </td>
         <td>{(this.props.article.min_price*this.props.article.quantity)}</td>
       </tr>
@@ -63,7 +62,7 @@ class Basket extends Component {
               <td>Total</td>
               <td>{this.props.productsInBasket.forEach((article) =>
                 total += article.min_price * article.quantity )
-              }{total}
+              }{total.toFixed(2)}
                  €</td>
             </tr>
             </tfoot>
