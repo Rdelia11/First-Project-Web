@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+// import { GoogleLogin } from 'react-google-login';
+
+// const responseGoogle = (response) => {
+//   console.log(response);
+// }
 
 function Navbar(props){
   return(
@@ -11,6 +16,7 @@ function Navbar(props){
       </div>
       <div id="container">
         <div id="connectButton">
+          {/* <GoogleLogin clientId="975507228152-s6o2o4cnih74js8prhaoru6bhnj152lk.apps.googleusercontent.com" buttonText="Login" onSuccess={responseGoogle} onFailure={responseGoogle}/> */}
           <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark">
           </div>
         </div>
@@ -23,8 +29,11 @@ function Navbar(props){
         </div>
       </div>
     </div>
+
   );
 }
+
+
 
 
 
