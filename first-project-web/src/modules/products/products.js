@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {mapStateToProps} from './../../store/basket/selector.js'
+import {cartAction} from './../../store/basket/handlers.js'
+import {connect} from 'react-redux';
 
 const Product = ({ match }) => (
   <div>
@@ -42,7 +45,7 @@ class Products extends Component {
 
 
             <Link to={`/product/${oneProduct.id}`} className="btn btn-outline-primary">See product page</Link>
-            <Link to={"#"} className="btn btn-primary ml-2">Add to basket</Link>
+            <button className="btn btn-primary ml-2" onClick={() => this.props.addmoreqte(oneProduct,1)}>Add to basket</button>
 
           </div>
           </div>
@@ -80,4 +83,4 @@ class Products extends Component {
 
 
 
-export default Products;
+export default connect(mapStateToProps, cartAction)(Products);
