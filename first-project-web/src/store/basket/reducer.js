@@ -26,6 +26,7 @@ function addMoreQte(products, article, qte) {
   );
   if (!findItem) {
     tabState.push({
+      id: article.id,
       title: article.title,
       decathlon_id: article.decathlon_id,
       min_price: article.min_price,
