@@ -67,3 +67,13 @@ body {
 #page_container{
   padding-top:80px;
 }
+
+.SearchBar{
+  margin-left: 1000px;
+}
+
+body {
+ font-family:"tahoma";
+ color: #3368FF;
+ font-style: oblique;
+}
