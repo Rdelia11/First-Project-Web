@@ -23,11 +23,11 @@ body {
   background-color: red;
   color: white;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 11px;
   border-radius: 50%;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 8px;
+  right: 22px;
 }
 #home{
   padding:15px 15px 15px 35px;
