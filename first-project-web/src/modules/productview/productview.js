@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import {mapStateToProps} from './../../store/basket/selector.js'
 import {cartAction} from './../../store/basket/handlers.js'
 import {connect} from 'react-redux';
@@ -42,27 +41,27 @@ class ProductCard extends Component {
 
     return (
       <div>
-      <h1>Product detail</h1>
-      <div id="container_ProductCard">
-        <div id="child_image">
-          <img src={url}/>
-        </div>
-        <div id="child_blocInfo">
-          <h4>{this.props.product.title}</h4>
-          <p>{this.props.product.description}</p>
-          <hr></hr>
-          <span className="price">{this.props.product.min_price} €</span>
-          <p>Customer rating : {this.props.product.rating} /5</p>
-          <div><img src={urlImg} width="140px"/></div>
-          <div>
-            <button className="btn-count" onClick={() => this.oneless()}>-</button>
-            {this.state.counter}
-            <button className="btn-count" onClick={() => this.addone()}>+</button>
+        <h1>Product detail</h1>
+        <div id="container_ProductCard">
+          <div id="child_image">
+            <img src={url} alt={this.props.product.title}/>
           </div>
-          <button className="btn btn-primary mt-4" onClick={() => this.props.addmoreqte(this.props.product,this.state.counter)}>Add {this.state.counter} to basket</button>
+          <div id="child_blocInfo">
+            <h4>{this.props.product.title}</h4>
+            <p>{this.props.product.description}</p>
+            <hr></hr>
+            <span className="price">{this.props.product.min_price} €</span>
+            <p>Customer rating : {this.props.product.rating} /5</p>
+            <div><img src={urlImg} width="140px" alt={this.props.product.title}/></div>
+            <div>
+              <button className="btn-count" onClick={() => this.oneless()}>-</button>
+              {this.state.counter}
+              <button className="btn-count" onClick={() => this.addone()}>+</button>
+            </div>
+            <button className="btn btn-primary mt-4" onClick={() => this.props.addmoreqte(this.props.product,this.state.counter)}>Add {this.state.counter} to basket</button>
+          </div>
         </div>
       </div>
-    </div>
     )
   }
 }

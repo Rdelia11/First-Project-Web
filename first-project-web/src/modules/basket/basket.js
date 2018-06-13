@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Store from './../../store/store.js'
 import {mapStateToProps} from './../../store/basket/selector.js'
 import {cartAction} from './../../store/basket/handlers.js'
 import {connect} from 'react-redux';
@@ -9,7 +8,7 @@ class ViewOneArticle extends Component {
      const url="https://www.decathlon.fr/media/"+this.props.article.image_path;
     return (
       <tr>
-        <td><img className="zoomImage" src={url}/></td>
+        <td><img className="zoomImage" src={url} alt={this.props.article.title}/></td>
         <td>{this.props.article.title}</td>
         <td>{this.props.article.decathlon_id}</td>
         <td>{this.props.article.min_price} €</td>
