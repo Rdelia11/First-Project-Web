@@ -81,6 +81,11 @@ body {
   padding-top:80px;
 }
 
+
+.SearchBar{
+  margin-left: 1000px;
+}
+
 .titleBasket{
   height: 60px;
   font-weight:bold;
@@ -106,9 +111,6 @@ body {
 .zoomImage:hover{
   transform: scale(2.3);
 }
-
-
-
 
 #container_ProductCard{
   width:100%;
@@ -144,5 +146,4 @@ a{
 
 .btn-primary:hover{
   background-color:#04689A;
-
 }
