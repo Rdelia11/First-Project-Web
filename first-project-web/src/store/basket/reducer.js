@@ -32,6 +32,26 @@ function addOneItem(products, id) {
   )
 }
 
+function deleteOneItem(products, id) {
+  return products.map(
+    (oneProduct) =>
+      oneProduct.decathlon_id === id
+      ? {...oneProduct, quantity:oneProduct.quantity -1}
+      : oneProduct
+  )
+}
+
+function RemoveItem(products, id) {
+  return products.map(
+    function (oneProduct) {
+      if (oneProduct.decathlon_id !== id) {
+        return {oneProduct}
+      }
+    }
+
+  )
+}
+
 const BasketReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_QUANTITY':
@@ -40,9 +60,16 @@ const BasketReducer = (state = initialState, action) => {
         productsInBasket: addOneItem(state.productsInBasket,action.id)
       };
 
-    case 'REMOVEITEM':
+    case 'DEL_QUANTITY':
       return {
-        state
+        ...state,
+        productsInBasket: deleteOneItem(state.productsInBasket,action.id)
+      };
+
+    case 'REMOVE_ITEM':
+      return {
+        ...state,
+        productsInBasket: RemoveItem(state.productsInBasket,action.id)
       };
 
     default:
