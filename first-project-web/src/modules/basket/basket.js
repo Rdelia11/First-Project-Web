@@ -29,6 +29,7 @@ const ViewOneArticleConnected = connect(null, cartAction)(ViewOneArticle)
 
 class Basket extends Component {
   render() {
+    let total = 0;
     console.log(this.props)
     return (
       <div id="page_container" className="col-8 offset-2">
@@ -58,7 +59,8 @@ class Basket extends Component {
               <td></td>
               <td></td>
               <td>Total</td>
-              <td> €</td>
+              <td>{this.props.productsInBasket.map(article => total += article.min_price*article.quantity)}
+                {total} €</td>
             </tr>
             </tfoot>
           </table>
