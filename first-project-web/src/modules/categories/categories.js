@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import _ from 'underscore';
+
 
 class Categories extends Component {
   constructor(props){
     super(props);
     this.state = {
-      listCategories: []
+      listCategories: [],
+      sort: 'ASC',
     }
   }
+
+  sortBy (column){
+    let sortedCategory = this.state.listCategories;
+    if(this.state.sort === 'ASC'){
+      sortedCategory = _.sortBy(this.state.listCategories, column);
+      this.setState({sort : 'DESC'});
+    }else{
+      sortedCategory = _.sortBy(this.state.listCategories, column).reverse();
+      this.setState({sort : 'ASC'});
+    }
+      this.setState({listCategories : sortedCategory})
+  }
+
 
   componentDidMount(){
     axios.get('https://decath-product-api.herokuapp.com/categories')
@@ -42,7 +58,7 @@ class Categories extends Component {
       <table className="table">
         <thead>
           <tr>
-            <th>Category name</th>
+            <th scope="col" onClick={this.sortBy.bind(this, "label")}>Category name</th>
             {/* <th>Category UUID</th> */}
           </tr>
         </thead>
