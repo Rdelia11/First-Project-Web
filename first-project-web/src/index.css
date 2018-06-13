@@ -153,6 +153,10 @@ a{
   font-weight:600;
 }
 
+#imgbin{
+  cursor:pointer;
+}
+
 .btn-primary{
   background-color:#0082C3;
   border-color:#0082C3;

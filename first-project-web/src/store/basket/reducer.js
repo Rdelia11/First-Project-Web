@@ -42,7 +42,7 @@ function deleteOneItem(products, id) {
 }
 
 function RemoveItem(products, id) {
-
+  return products.filter(function(oneProduct){ return oneProduct.decathlon_id !== id });
 }
 
 const BasketReducer = (state = initialState, action) => {
