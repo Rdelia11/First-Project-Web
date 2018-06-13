@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 class ProductCard extends Component {
@@ -33,10 +34,11 @@ class ProductCard extends Component {
           <h4>{this.props.product.title}</h4>
           <p>{this.props.product.description}</p>
           <hr></hr>
-          <span id="price">{this.props.product.min_price} €</span>
+          <span className="price">{this.props.product.min_price} €</span>
           <p>Customer rating : {this.props.product.rating} /5</p>
           <div><img src={urlImg} width="140px"/></div>
-          <a href="#" className="btn btn-primary mt-4">Add to cart &gt;</a>
+
+          <Link to={"#"} className="btn btn-primary mt-4">Add to basket</Link>
         </div>
       </div>
     </div>

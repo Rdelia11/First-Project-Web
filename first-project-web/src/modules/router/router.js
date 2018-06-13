@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  NavLink
+  Link
 } from 'react-router-dom';
 
+import Navbar from './../navbar/navbar';
 import Home from './../home/home.js'
 import Basket from './../basket/basket.js'
 import Products from './../products/products.js'
@@ -16,7 +16,7 @@ class LocalRouter extends Component {
     return (
       <Router>
         <div>
-
+          <Navbar/>
           <Route exact path="/" component={Home}/>
           <Route exact path="/products/:categoryId" component={Products}/>
           <Route path="/product/:productId" component={ProductView}/>

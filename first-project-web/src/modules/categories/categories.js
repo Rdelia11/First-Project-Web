@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Categories extends Component {
   constructor(props){
@@ -26,11 +27,8 @@ class Categories extends Component {
       return(
         <tr>
           <td key={index}>
-            <a href={`/products/${oneCategory.id}`}>
-              {oneCategory.label}
-            </a>
+            <Link to={`/products/${oneCategory.id}`}>{oneCategory.label}</Link>
           </td>
-          {/* <td>{oneCategory.id}</td> */}
         </tr>
       )
     })
