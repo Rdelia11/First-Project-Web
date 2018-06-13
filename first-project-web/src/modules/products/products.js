@@ -18,7 +18,8 @@ class Products extends Component {
   }
 
   componentDidMount(){
-    axios.get('https://decath-product-api.herokuapp.com/categories/9f8d8840-e22c-496f-b865-f5014710e234/products')
+    console.log(this.props.match.params.categoryId);
+    axios.get(`https://decath-product-api.herokuapp.com/categories/${this.props.match.params.categoryId}/products`)
     .then((response) => this.setState({listProducts: response.data, FilterView: response.data}))
   }
 
@@ -31,10 +32,10 @@ class Products extends Component {
           </div>
           <div className="card-section">
             <a href={`/product/${oneProduct.id}`}><h4 className="card-product-name">{oneProduct.title}</h4></a>
-            <img src={`https://www.decathlon.fr/media/${oneProduct.image_path}`} alt="Product"></img>
+            <a href={`/product/${oneProduct.id}`}><img src={`https://www.decathlon.fr/media/${oneProduct.image_path}`} alt="Product"></img></a>
             <h5 className="card-product-price">{oneProduct.min_price}€</h5>
             <p className="card-product-description">{oneProduct.description}</p>
-            <a href="#" className="btn btn-outline-primary">Add to basket</a>
+            <a href="#" className="btn btn-primary">Add to basket</a>
           </div>
         </div>
         </div>

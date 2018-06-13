@@ -19,6 +19,7 @@ body {
 #navbar a{
   color:white;
 }
+
 .bottom-right {
   background-color: red;
   color: white;
@@ -29,6 +30,7 @@ body {
   top: 5px;
   right: 5px;
 }
+
 #home{
   padding:15px 15px 15px 35px;
   width:50px;
@@ -144,6 +146,7 @@ a{
 
 .btn-primary{
   background-color:#0082C3;
+  border-color:#0082C3;
 }
 
 .btn-primary:hover{
