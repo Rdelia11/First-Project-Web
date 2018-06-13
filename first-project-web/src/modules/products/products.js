@@ -30,7 +30,7 @@ class Products extends Component {
           <div className="card-body">
           </div>
           <div className="card-section">
-            <a href="#"><h4 className="card-product-name">{oneProduct.title}</h4></a>
+            <a href={`/product/${oneProduct.id}`}><h4 className="card-product-name">{oneProduct.title}</h4></a>
             <img src={`https://www.decathlon.fr/media/${oneProduct.image_path}`} alt="Product"></img>
             <h5 className="card-product-price">{oneProduct.min_price}€</h5>
             <p className="card-product-description">{oneProduct.description}</p>
