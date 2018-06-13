@@ -1,5 +1,5 @@
 const initialState = {
-<<<<<<< HEAD
+
   productsInBasket : [{
     title: "Corne chasse 14cm",
     decathlon_id: 8282689,
@@ -22,10 +22,10 @@ const initialState = {
     image_path: "828/8282689/zoom_52fc3fd48aac4f30a127e90388958eb6.jpg",
   }
 ],
-loggedIn:false
-=======
-  productsInBasket : []
->>>>>>> 24c9bf9937d891ed32b5561d1a90cfa069aa67a7
+loggedIn:false,
+name:""
+
+
 }
 
 function addOneItem(products, id) {
@@ -104,7 +104,7 @@ const BasketReducer = (state = initialState, action) => {
 
       case 'LOGIN':
         return {
-          ...state,loggedIn:true
+          ...state,loggedIn:action.loggedIn,name:action.name
         };
 
     default:

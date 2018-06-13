@@ -17,7 +17,8 @@ window.googleConnectCallback = function(googleUser) {
   console.log("Email: " + profile.getEmail());
   // The ID token you need to pass to your backend:
   const id_token = googleUser.getAuthResponse().id_token;
-  store.dispatch({type:"LOGIN",loggedIn:true});
+  store.dispatch({type:"LOGIN",loggedIn:true,name:profile.getName()});
+
 
   //console.log("ID Token: " + id_token);
 };
