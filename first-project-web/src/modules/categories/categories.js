@@ -29,7 +29,7 @@ class Categories extends Component {
               {oneCategory.label}
             </a>
           </td>
-          <td>{oneCategory.id}</td>
+          {/* <td>{oneCategory.id}</td> */}
         </tr>
       )
     })
@@ -43,7 +43,7 @@ class Categories extends Component {
         <thead>
           <tr>
             <th>Category name</th>
-            <th>Category UUID</th>
+            {/* <th>Category UUID</th> */}
           </tr>
         </thead>
         <tbody>

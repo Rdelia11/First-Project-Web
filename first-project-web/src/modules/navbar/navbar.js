@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+// import { GoogleLogin } from 'react-google-login';
+
+// const responseGoogle = (response) => {
+//   console.log(response);
+// }
 
 function Navbar(props){
   return(
@@ -11,17 +16,27 @@ function Navbar(props){
       </div>
       <div id="container">
         <div id="connectButton">
-          <button type="button" className="btn btn-outline-light">Login</button>
+          {/* <GoogleLogin clientId="975507228152-s6o2o4cnih74js8prhaoru6bhnj152lk.apps.googleusercontent.com" buttonText="Login" onSuccess={responseGoogle} onFailure={responseGoogle}/> */}
+          <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark">
+          </div>
         </div>
         <div id="logged">
           <span id="connected">Hello firstName</span>
         </div>
         <div id="cart">
           <a href="/basket"><i className="fas fa-shopping-cart"></i></a>
+          <div className="bottom-right">&nbsp;1&nbsp;</div>
         </div>
       </div>
     </div>
+
   );
 }
+
+
+
+
+
+
 
 export default Navbar;

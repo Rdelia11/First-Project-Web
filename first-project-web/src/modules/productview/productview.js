@@ -5,6 +5,23 @@ import axios from 'axios';
 class ProductCard extends Component {
   render() {
     const url="https://www.decathlon.fr/media/"+this.props.product.image_path;
+
+    let urlImg;
+
+      if(this.props.product.rating>=4.5){
+      urlImg="/pictures/ic_star5@2x.png";
+    }else if(this.props.product.rating>=3.5){
+      urlImg="/pictures/ic_star4@2x.png";
+    }else if(this.props.product.rating>=2.5){
+      urlImg="/pictures/ic_star3@2x.png";
+    }else if(this.props.product.rating>=1.5){
+      urlImg="/pictures/ic_star2@2x.png";
+    }else if (this.props.product.rating>0){
+      urlImg="/pictures/ic_star1@2x.png";
+    }else{
+      urlImg="";
+    }
+
     return (
       <div>
       <h1>Product detail</h1>
@@ -18,7 +35,8 @@ class ProductCard extends Component {
           <hr></hr>
           <span id="price">{this.props.product.min_price} €</span>
           <p>Customer rating : {this.props.product.rating} /5</p>
-          <a href="#" className="btn btn-primary">Add to cart &gt;</a>
+          <div><img src={urlImg} width="140px"/></div>
+          <a href="#" className="btn btn-primary mt-4">Add to cart &gt;</a>
         </div>
       </div>
     </div>
@@ -40,7 +58,7 @@ class ProductView extends Component {
     .then((response) => this.setState({productView: response.data}))
   }
 
- 
+
 
   render() {
     console.log(this.state.productView);
