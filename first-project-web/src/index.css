@@ -135,17 +135,27 @@ body {
 
 #child_image{
   padding:25px;
+
   min-width:25%;
 }
 
 #child_blocInfo{
   padding:25px;
   text-align:left;
+  max-width:40%;
   min-width:25%;
 }
 
 a{
   color:#0082C3;
+}
+
+tr:hover{
+  background-color:#ebebeb;
+}
+
+.btn{
+  padding:10px;
 }
 
 .price{
