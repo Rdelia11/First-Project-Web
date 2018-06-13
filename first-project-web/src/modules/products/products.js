@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Product = ({ match }) => (
   <div>
@@ -32,10 +33,17 @@ class Products extends Component {
 
           <div className="card-section">
             <h4 className="card-product-name">{oneProduct.title}</h4>
-            <a href={`/product/${oneProduct.id}`}><img src={`https://www.decathlon.fr/media/${oneProduct.image_path}`} alt="Product"></img></a>
+
+            <Link to={`/product/${oneProduct.id}`}><img src={`https://www.decathlon.fr/media/${oneProduct.image_path}`} alt="Product"></img></Link>
+
+
             <div className="price pt-4">{oneProduct.min_price}€</div>
             <p className="card-product-description">{oneProduct.description}</p>
-            <a href={`/product/${oneProduct.id}`} className="btn btn-outline-primary">See product page</a><a href="#" className="btn btn-primary ml-3">Add to basket</a>
+
+
+            <Link to={`/product/${oneProduct.id}`} className="btn btn-outline-primary">See product page</Link>
+            <Link to={"#"} className="btn btn-primary ml-2">Add to basket</Link>
+
           </div>
           </div>
         </div>
