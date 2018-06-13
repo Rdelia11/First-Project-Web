@@ -14,9 +14,9 @@ class ViewOneArticle extends Component {
         <td>{this.props.article.decathlon_id}</td>
         <td>{this.props.article.min_price} €</td>
         <td>
-          <button onClick={ () => this.props.delqte(this.props.article.decathlon_id)}>-</button>
+          <button className="btn-count" onClick={ () => this.props.delqte(this.props.article.decathlon_id)}>-</button>
           {this.props.article.quantity}
-          <button onClick={ () => this.props.addqte(this.props.article.decathlon_id)}>+</button>
+          <button className="btn-count" onClick={ () => this.props.addqte(this.props.article.decathlon_id)}>+</button>
         </td>
         <td><img src="./bin.png" alt="bin" width="15px" id="imgbin" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></img>
       </td>
