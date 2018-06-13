@@ -17,10 +17,11 @@ class Categories extends Component {
     let sortedCategory = this.state.listCategories;
     if(this.state.sort === 'ASC'){
       sortedCategory = _.sortBy(this.state.listCategories, column);
-      this.setState({sort : 'DESC'});
+      console.log(sortedCategory);
+      this.setState({FilterView: sortedCategory, sort : 'DESC'});
     }else{
       sortedCategory = _.sortBy(this.state.listCategories, column).reverse();
-      this.setState({sort : 'ASC'});
+      this.setState({FilterView: sortedCategory, sort : 'ASC'});
     }
       this.setState({listCategories : sortedCategory})
   }
@@ -31,11 +32,11 @@ class Categories extends Component {
     .then((response) => this.setState({listCategories: response.data, FilterView: response.data}))
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (prevProps.listCategories !== this.props.listCategories) {
-      this.print1line()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState){
+  //   if (prevProps.listCategories !== this.props.listCategories) {
+  //     this.print1line()
+  //   }
+  // }
 
   print1line(){
     return this.state.FilterView.map((oneCategory, index) => {

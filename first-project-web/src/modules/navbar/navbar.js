@@ -40,8 +40,8 @@ class Navbar extends Component{
 
 
           <div id="cart">
-            <Link to="/basket"><i className="fas fa-shopping-cart"></i></Link>
-            <div className="bottom-right">&nbsp;{this.howmanyArticleInBasket()}&nbsp;</div>
+            <Link to="/basket"><i className="fas fa-shopping-cart"></i>
+            <div className="bottom-right">&nbsp;{this.howmanyArticleInBasket()}&nbsp;</div></Link>
           </div>
         </div>
       </div>

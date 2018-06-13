@@ -1,9 +1,26 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import {mapStateToProps} from './../../store/basket/selector.js'
+import {cartAction} from './../../store/basket/handlers.js'
+import {connect} from 'react-redux';
 
 class ProductCard extends Component {
+  constructor() {
+    super()
+    this.state = {
+      counter:1
+    }
+  }
+
+  addone() {
+    this.setState({counter:this.state.counter + 1});
+  }
+
+  oneless() {
+    this.setState({counter:this.state.counter - 1});
+  }
+
   render() {
     const url="https://www.decathlon.fr/media/"+this.props.product.image_path;
 
@@ -37,8 +54,12 @@ class ProductCard extends Component {
           <span className="price">{this.props.product.min_price} €</span>
           <p>Customer rating : {this.props.product.rating} /5</p>
           <div><img src={urlImg} width="140px"/></div>
-
-          <Link to={"#"} className="btn btn-primary mt-4">Add to basket</Link>
+          <div>
+            <button className="btn-count" onClick={() => this.oneless()}>-</button>
+            {this.state.counter}
+            <button className="btn-count" onClick={() => this.addone()}>+</button>
+          </div>
+          <button className="btn btn-primary mt-4" onClick={() => this.props.addmoreqte(this.props.product,this.state.counter)}>Add {this.state.counter} to basket</button>
         </div>
       </div>
     </div>
@@ -46,6 +67,7 @@ class ProductCard extends Component {
   }
 }
 
+const ProductCardConnected = connect(mapStateToProps, cartAction)(ProductCard);
 
 class ProductView extends Component {
   constructor(props){
@@ -66,10 +88,11 @@ class ProductView extends Component {
     console.log(this.state.productView);
     return (
     <div id="page_container" className="col-10 offset-1">
-      <ProductCard product={this.state.productView} />
+      <ProductCardConnected product={this.state.productView} />
     </div>
     )
   }
 }
+
 
 export default ProductView;

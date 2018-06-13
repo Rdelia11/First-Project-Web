@@ -187,6 +187,12 @@ tr:hover{
   color:white;
 }
 
+.btn-count {
+  width:30px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
 h1{
   font-family: 'Roboto Condensed bold italic', sans-serif;
   text-transform: uppercase;
