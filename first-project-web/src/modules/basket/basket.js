@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import {mapStateToProps} from './../../store/basket/selector.js'
 import {cartAction} from './../../store/basket/handlers.js'
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class ViewOneArticle extends Component {
   render() {
      const url="https://www.decathlon.fr/media/"+this.props.article.image_path;
+     console.log(this.props.article.id);
     return (
       <tr>
         <td><img className="zoomImage" src={url} alt={this.props.article.title}/></td>
-        <td>{this.props.article.title}</td>
+        <td><Link to={`/product/${this.props.article.id}`}>{this.props.article.title}</Link></td>
         <td>{this.props.article.decathlon_id}</td>
         <td>{this.props.article.min_price} €</td>
         <td>
