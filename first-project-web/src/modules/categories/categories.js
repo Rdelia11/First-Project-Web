@@ -22,7 +22,7 @@ class Categories extends Component {
       sortedCategory = _.sortBy(this.state.listCategories, column).reverse();
       this.setState({sort : 'ASC'});
     }
-      this.setState({listCategories : sortedCategory})
+    this.setState({listCategories : sortedCategory})
   }
 
 
@@ -68,24 +68,24 @@ class Categories extends Component {
 
   render () {
     return (
-    <div id="page_container" className="col-10 offset-1">
-      <h1 className="pb-3">Pick a category</h1>
-      <form>
-        <input className="SearchBar" type="text" placeholder="Search a category..." onChange={(e)=> this.hundleChange(e)} >
-        </input>
-      </form>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col" onClick={this.sortBy.bind(this, "label")}>Category name</th>
-            {/* <th>Category UUID</th> */}
-          </tr>
-        </thead>
-        <tbody>
-          {this.print1line()}
-        </tbody>
-      </table>
-    </div>
+      <div id="page_container" className="col-10 offset-1">
+        <h1 className="pb-3">Pick a category</h1>
+        <form>
+          <input className="SearchBar" type="text" placeholder="Search a category..." onChange={(e)=> this.hundleChange(e)} >
+          </input>
+        </form>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col" onClick={this.sortBy.bind(this, "label")}>Category name</th>
+              {/* <th>Category UUID</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {this.print1line()}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }
