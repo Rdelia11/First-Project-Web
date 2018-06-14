@@ -50,12 +50,16 @@ class Products extends Component {
 
   hundleChange = (e) => {
     let searchResult = [];
-    console.log(e.target.value.length);
+    //console.log(e.target.value.length);
+    if(e.target.value.length === 0){
+      return searchResult = this.state.listProducts;
+    }else{
       this.state.listProducts.filter(item => {
         if (item.title.toUpperCase().includes(e.target.value.toUpperCase())) {
           return searchResult.push(item);
         }
       })
+    }
     this.setState({FilterView : searchResult})
   }
 
