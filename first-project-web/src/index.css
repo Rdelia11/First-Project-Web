@@ -124,14 +124,33 @@ body {
 }
 
 .card{
-  border-top: none;
-  border-right:none;
-  border-left:none;
-  border-bottom:solid black 1 px;
+
+
+  border:solid black 1 px;
   padding-bottom:30px;
   padding-top: 0;
-  margin-top: 0;
+  margin : 5px;
 
+}
+
+.card-section {
+  margin:10px;
+  width:250px;
+  height:500px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.products_container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgcat{
+  width:210px;
 }
 
 #container_ProductCard{
@@ -181,9 +200,36 @@ tr:hover{
   padding:10px;
 }
 
+.price_contain{
+  display:flex;
+  justify-content: flex-end;
+}
 .price{
-  font-size:24px;
-  font-weight:600;
+  border:1px lightgrey solid;
+  background-color: yellow;
+  text-align: right;
+  top:0;
+  padding-left:2px;
+  padding-top: 2px;
+  font-size:17px;
+}
+
+.price_crossed {
+  border:1px lightgrey solid;
+  background-color: red;
+  adding:3px;
+  font-size:17px;
+}
+
+.striketext{
+  font-size: 10px;
+  text-decoration: line-through;
+}
+
+.reduction{
+  font-size: 12px;
+  margin-left:5px;
+  background-color: #7FFF00;
 }
 
 #imgbin{
