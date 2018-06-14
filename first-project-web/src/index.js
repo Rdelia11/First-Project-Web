@@ -29,7 +29,6 @@ window.onscroll = function(){
   }
 }
 
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
