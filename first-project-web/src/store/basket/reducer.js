@@ -4,7 +4,7 @@ const initialState = localStorage.getItem("cart")
   : {productsInBasket : [],
      loggedIn:false,
     name:"",
-    urlPic=""
+    urlPic:""
     };
 
 // const initialState = {
