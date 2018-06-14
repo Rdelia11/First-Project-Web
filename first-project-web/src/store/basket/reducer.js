@@ -1,20 +1,36 @@
-const initialState = {
 
-  productsInBasket : [],
-loggedIn:false,
-name:"",
-urlPic:""
+const initialState = localStorage.getItem("cart")
+  ? {productsInBasket : JSON.parse(localStorage.getItem("cart"))}
+  : {productsInBasket : [],
+     loggedIn:false,
+    name:"",
+    urlPic=""
+    };
 
+// const initialState = {
+//   productsInBasket : []
+// }
 
+function storeData(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true; // All went well
+  } catch (error) {
+    console.warn("something wrong happened", error);
+    return false; // An error occured
+  }
 }
 
 function addOneItem(products, id) {
-  return products.map(
+  let newState = products.map(
     (oneProduct) =>
       oneProduct.decathlon_id === id
       ? {...oneProduct, quantity:oneProduct.quantity +1}
       : oneProduct
-  )
+  );
+
+  storeData("cart", newState);
+  return newState;
 }
 
 function addMoreQte(products, article, qte) {
@@ -41,20 +57,28 @@ function addMoreQte(products, article, qte) {
     });
   }
   console.log(tabState);
+  storeData("cart", tabState);
   return tabState;
 }
 
 function deleteOneItem(products, id) {
-  return products.map(
+  let newState = products.map(
     (oneProduct) =>
       oneProduct.decathlon_id === id
       ? {...oneProduct, quantity:oneProduct.quantity -1}
       : oneProduct
-  )
+    );
+
+    storeData("cart", newState);
+    return newState;
 }
 
 function RemoveItem(products, id) {
-  return products.filter(function(oneProduct){ return oneProduct.decathlon_id !== id });
+  let newState = products.filter(
+    function(oneProduct){ return oneProduct.decathlon_id !== id });
+
+    storeData("cart", newState);
+    return newState;
 }
 
 const BasketReducer = (state = initialState, action) => {
