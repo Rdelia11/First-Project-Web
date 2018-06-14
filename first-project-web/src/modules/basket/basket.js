@@ -6,6 +6,24 @@ import { Link } from 'react-router-dom';
 import StripeCheckout from "react-stripe-checkout";
 
 class ViewOneArticle extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      disabledbtn : true,
+    }
+  }
+
+  componentDidMount(){
+
+    if(this.props.article.quantity==1){
+      this.setState({disabledbtn : true})
+    } else {
+      this.setState({disabledbtn : false})
+    }
+  }
+
+
   render() {
      const url="https://www.decathlon.fr/media/"+this.props.article.image_path;
      console.log(this.props.article.id);
@@ -16,12 +34,35 @@ class ViewOneArticle extends Component {
         <td>{this.props.article.decathlon_id}</td>
         <td>{this.props.article.min_price} €</td>
         <td>
-          <button className="btn-count" onClick={ () => this.props.delqte(this.props.article.decathlon_id)}>-</button>
+          <button
+            className="btn-count"
+            disabled={this.state.disabledbtn}
+            id="minusbtn"
+            onClick={ () => {
+
+
+              if (this.props.article.quantity <= 2){
+                this.setState({disabledbtn : true})
+              }
+              this.props.delqte(this.props.article.decathlon_id)
+            }
+          }
+            >-</button>
           {this.props.article.quantity}
-          <button className="btn-count" onClick={ () => this.props.addqte(this.props.article.decathlon_id)}>+</button>
+
+          <button
+            className="btn-count"
+            onClick={ () => {
+
+              if (this.props.article.quantity >= 1){
+                this.setState({disabledbtn : false})
+              }
+              this.props.addqte(this.props.article.decathlon_id)
+            }
+            }>+</button>
         </td>
         <td><img src="./bin.png" alt="bin" width="15px" id="imgbin" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></img>
-      </td>
+        </td>
         <td>{(this.props.article.min_price*this.props.article.quantity).toFixed(2)}</td>
       </tr>
     )
@@ -65,25 +106,25 @@ class Basket extends Component {
 
     return (
       <div id="page_container" className="col-8 offset-2">
-       <div className="titleBasket">My order </div>
+        <div className="titleBasket">My order </div>
         <table className="table">
           <thead className="tableHeader">
             <tr className="tableRow">
               <td></td>
-                <td>Product's name</td>
-                <td>Product's id</td>
-                <td>Price</td>
-                <td>Quantity</td>
-                <td>Action</td>
-                <td>Total</td>
-              </tr>
-            </thead>
-            <tbody className="tableBody">
-              {this.props.productsInBasket.map(onearticle =>
-                <ViewOneArticleConnected article={onearticle} />
-              )}
-            </tbody>
-            <tfoot className="tableFoot">
+              <td>Product's name</td>
+              <td>Product's id</td>
+              <td>Price</td>
+              <td>Quantity</td>
+              <td>Action</td>
+              <td>Total</td>
+            </tr>
+          </thead>
+          <tbody className="tableBody">
+            {this.props.productsInBasket.map(onearticle =>
+              <ViewOneArticleConnected article={onearticle} />
+            )}
+          </tbody>
+          <tfoot className="tableFoot">
             <tr>
               <td></td>
               <td></td>
@@ -104,6 +145,7 @@ class Basket extends Component {
              stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
            />
           </div>
+
       </div>
     )
   }}
