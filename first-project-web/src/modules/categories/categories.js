@@ -29,7 +29,7 @@ class Categories extends Component {
 
   componentDidMount(){
     axios.get('https://decath-product-api.herokuapp.com/categories')
-    .then((response) => this.setState({listCategories: response.data, FilterView: response.data}))
+    .then((response) => this.setState({listCategories: response.data, FilterView:response.data}))
   }
 
   // componentDidUpdate(prevProps, prevState){
@@ -69,7 +69,11 @@ class Categories extends Component {
     : null
   }
 
+
+
   render () {
+
+
     return (
     <div id="page_container" className="col-10 offset-1">
       <h1 className="pb-3">Pick a category</h1>

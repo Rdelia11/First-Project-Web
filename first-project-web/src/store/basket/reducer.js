@@ -1,5 +1,11 @@
 const initialState = {
-  productsInBasket : []
+
+  productsInBasket : [],
+loggedIn:false,
+name:"",
+urlPic:""
+
+
 }
 
 function addOneItem(products, id) {
@@ -26,6 +32,7 @@ function addMoreQte(products, article, qte) {
   );
   if (!findItem) {
     tabState.push({
+      id: article.id,
       title: article.title,
       decathlon_id: article.decathlon_id,
       min_price: article.min_price,
@@ -75,6 +82,16 @@ const BasketReducer = (state = initialState, action) => {
         ...state,
         productsInBasket: RemoveItem(state.productsInBasket,action.id)
       };
+
+      case 'LOGIN':
+        return {
+          ...state,loggedIn:action.loggedIn,name:action.name,urlPic:action.urlPic
+        };
+
+        case 'LOGOUT':
+          return {
+            ...state,loggedIn:action.loggedIn,name:action.name,urlPic:action.urlPic
+          };
 
     default:
       return state
