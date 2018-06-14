@@ -1,10 +1,14 @@
 
 const initialState = localStorage.getItem("cart")
-  ? {productsInBasket : JSON.parse(localStorage.getItem("cart"))}
-  : {productsInBasket : [],
-     loggedIn:false,
+  ? {productsInBasket : JSON.parse(localStorage.getItem("cart")),
+    loggedIn:false,
     name:"",
     urlPic:""
+    }
+  : {productsInBasket : [],
+     loggedIn:false,
+     name:"",
+     urlPic:""
     };
 
 // const initialState = {

@@ -25,9 +25,6 @@ class Navbar extends Component{
     }
   }
 
-  render (){
-    window.addEventListener('storage', this.onStorageEvent);
-
   howmanyArticleInBasket(){
     let nbArticleInBasket = 0;
     this.props.productsInBasket.forEach(oneProduct => nbArticleInBasket += oneProduct.quantity);
@@ -45,6 +42,7 @@ class Navbar extends Component{
 
   render (){
     console.log("TEST NAME"+this.props.name)
+    window.addEventListener('storage', this.onStorageEvent);
     return(
       <div id="navbar" className="fixed-top">
         <div id="home">
