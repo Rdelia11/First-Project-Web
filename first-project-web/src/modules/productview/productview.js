@@ -69,7 +69,7 @@ class ProductCard extends Component {
                numberOfStars={5}
                name='rating'
              />
-            <div>
+            <div className="pt-3">
               <button className="btn-count" disabled={this.state.disabledbtn} onClick={() => this.oneless()}>-</button>
               {this.state.counter}
               <button className="btn-count" onClick={() => this.addone()}>+</button>

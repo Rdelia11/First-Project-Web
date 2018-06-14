@@ -90,6 +90,10 @@ body {
   padding-top:80px;
 }
 
+#page_container_products{
+  background-color:#ebebeb;
+  padding-top:80px;
+}
 
 .SearchBar{
   margin: 20px;
@@ -205,20 +209,22 @@ tr:hover{
   justify-content: flex-end;
 }
 .price{
-  border:1px lightgrey solid;
+
   background-color: yellow;
   text-align: right;
   top:0;
   padding-left:2px;
   padding-top: 2px;
-  font-size:17px;
+  font-size:18px;
+  font-weight: 600;
 }
 
 .price_crossed {
-  border:1px lightgrey solid;
+  color:white;
   background-color: red;
   adding:3px;
-  font-size:17px;
+  font-size:18px;
+  font-weight:600;
 }
 
 .striketext{
@@ -241,6 +247,14 @@ tr:hover{
   border-color:#0082C3;
 }
 
+.clickableTh{
+  cursor:pointer;
+}
+
+input{
+  padding:5px;
+}
+
 
 .btn-primary:hover{
   background-color:#04689A;
@@ -258,6 +272,7 @@ tr:hover{
 }
 
 .btn-count {
+  border-radius: 5px;
   width:30px;
   margin-left:10px;
   margin-right:10px;
