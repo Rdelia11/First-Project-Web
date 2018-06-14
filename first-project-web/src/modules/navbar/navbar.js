@@ -34,9 +34,9 @@ class Navbar extends Component{
         <div id="home">
           <Link to="/"><i className="fas fa-home"></i></Link>
         </div>
-        <div id="logo">
+        {/* <div id="logo">
           <img src={"https://nameless-cliffs-89719.herokuapp.com/images/logo.png"} width="100" alt="logo decathlon"/>
-        </div>
+        </div> */}
         <div id="container">
 
 
@@ -46,7 +46,7 @@ class Navbar extends Component{
               ? <GoogleButton />
               : (
                   <div>
-                    <span id="logout">{this.props.name.split(" ")[0]} // <a href="#" onClick={this.signOut}> logout</a> </span>
+                    <span id="logout">🏄🏼‍ {this.props.name.split(" ")[0]} | <a href="#" onClick={this.signOut}> Logout</a> </span>
                     <img src={this.props.urlPic} width="40px" className="urlPic"/>
                   </div>
                 )
