@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 
 import LocalRouter from './modules/router/router.js';
-import Categories from './modules/categories/categories'
 
 class App extends Component {
   constructor(props){

@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import store from './store/store.js';
 import {Provider} from 'react-redux';
 
+
 window.googleConnectCallback = function(googleUser) {
   // Useful data for your client-side scripts:
   const profile = googleUser.getBasicProfile();
@@ -17,7 +18,7 @@ window.googleConnectCallback = function(googleUser) {
   console.log("Email: " + profile.getEmail());
   // The ID token you need to pass to your backend:
   const id_token = googleUser.getAuthResponse().id_token;
-  store.dispatch({type:"LOGIN",loggedIn:true,name:profile.getName()});
+  store.dispatch({type:"LOGIN",loggedIn:true,name:profile.getName(),urlPic:profile.getImageUrl()});
 
 
   //console.log("ID Token: " + id_token);

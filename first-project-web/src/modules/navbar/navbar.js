@@ -4,11 +4,12 @@ import {connect} from 'react-redux';
 import {
   Link
 } from 'react-router-dom';
+import store from './../../store/store.js';
+/* global gapi */
 
 class Navbar extends Component{
   constructor(props){
     super(props);
-    console.log(this.props.state);
   }
 
   howmanyArticleInBasket(){
@@ -17,8 +18,17 @@ class Navbar extends Component{
     return nbArticleInBasket;
   }
 
-  render (){
+    signOut=()=>{
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+        store.dispatch({type:"LOGOUT",loggedIn:false,name:"",urlPic:""});
+        window.location.reload();
+    });
+  }
 
+  render (){
+    console.log("TEST NAME"+this.props.name)
     return(
       <div id="navbar" className="fixed-top">
         <div id="home">
@@ -32,8 +42,16 @@ class Navbar extends Component{
 
 
           <div id="connectButton">
-            <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark">
-            </div>
+            {this.props.loggedIn===false
+              ? <GoogleButton />
+              : (
+                  <div>
+                    <span id="logout">{this.props.name.split(" ")[0]} // <a href="#" onClick={this.signOut}> logout</a> </span>
+                    <img src={this.props.urlPic} width="40px" className="urlPic"/>
+                  </div>
+                )
+
+          }
           </div>
 
 
@@ -47,6 +65,12 @@ class Navbar extends Component{
       </div>
     );
   }
+}
+
+function GoogleButton(props){
+  return(
+    <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark"></div>
+  )
 }
 
 export default connect(mapStateToProps, null)(Navbar);
