@@ -9,7 +9,7 @@ import Home from './../home/home.js'
 import Basket from './../basket/basket.js'
 import Products from './../products/products.js'
 import ProductView from './../productview/productview.js'
-import ProductAR from './../augmentedreality/productar.js'
+
 
 class LocalRouter extends Component {
   render() {
@@ -21,7 +21,6 @@ class LocalRouter extends Component {
           <Route exact path="/products/:categoryId" component={Products}/>
           <Route path="/product/:productId" component={ProductView}/>
           <Route exact path="/basket" component={Basket}/>
-          <Route path="/productAR" component={ProductAR} />
         </div>
       </Router>
     )
