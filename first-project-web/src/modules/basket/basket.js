@@ -106,7 +106,7 @@ class Basket extends Component {
 
     return (
       <div id="page_container" className="col-8 offset-2">
-        <div className="titleBasket">My order </div>
+        <h1 className="pb-3">My order </h1>
         <table className="table">
           <thead className="tableHeader">
             <tr className="tableRow">

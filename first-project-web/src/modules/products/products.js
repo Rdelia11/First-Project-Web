@@ -110,7 +110,7 @@ class Products extends Component {
   render () {
     return (
       <div id="page_container_products">
-        <h1 className="body">Sports products</h1>
+        <h1 className="pb-3">Sports products</h1>
         <form>
           <input className="SearchBar" autoFocus type="text" placeholder="Search a product..." onChange={(e)=> this.handleChange(e)} >
           </input>
