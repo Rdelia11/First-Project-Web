@@ -37,6 +37,7 @@ class Products extends Component {
             <Link to={`/product/${oneProduct.id}`}><img src={`https://www.decathlon.fr/media/${oneProduct.image_path}`} alt="Product"></img></Link>
 
 
+            <p className=""> -{oneProduct.percent_reduction}%</p>
             <div className="price pt-4">{oneProduct.min_price}€</div>
             <p className="card-product-description">{oneProduct.description}</p>
 
