@@ -50,21 +50,23 @@ class Categories extends Component {
     })
   }
 
-  hundleChange = (e) => {
+  handleChange = (e) => {
     let searchResult = [];
     console.log(e.target.value.length);
     if (e.target.value.length === 0) {
       return searchResult = this.state.listCategories;
     } else {
-      this.state.listCategories.filter(item => {
-        if (item.label.toUpperCase().includes(e.target.value.toUpperCase())) {
-          return searchResult.push(item);
-        }
-      })
+      this.state.listCategories
+      .filter(item => this.keepOnlyUpperCaseItem(item.label, e.target.value))
+      .forEach(item => searchResult.push(item));
     }
-    //console.log(e.target.value)
-    this.setState({FilterView : searchResult})
+    this.setState({FilterView : searchResult});
+  }
 
+  keepOnlyUpperCaseItem = (labelProduct, inputValue) => {
+    return labelProduct.toUpperCase().includes(inputValue.toUpperCase())
+    ? labelProduct
+    : null
   }
 
 
@@ -76,7 +78,7 @@ class Categories extends Component {
     <div id="page_container" className="col-10 offset-1">
       <h1 className="pb-3">Pick a category</h1>
       <form>
-        <input className="SearchBar" type="text" placeholder="Search a category..." onChange={(e)=> this.hundleChange(e)} >
+        <input className="SearchBar" type="text" placeholder="Search a category..." onChange={(e)=> this.handleChange(e)} >
         </input>
       </form>
       <table className="table">
