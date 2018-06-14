@@ -3,6 +3,7 @@ import {mapStateToProps} from './../../store/basket/selector.js'
 import {cartAction} from './../../store/basket/handlers.js'
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
+import StripeCheckout from "react-stripe-checkout";
 
 class ViewOneArticle extends Component {
   render() {
@@ -30,9 +31,38 @@ class ViewOneArticle extends Component {
 const ViewOneArticleConnected = connect(null, cartAction)(ViewOneArticle)
 
 class Basket extends Component {
+
+  totalBasket(){
+    let totalBasket = 0;
+  this.props.productsInBasket.forEach((article) =>
+    totalBasket += article.min_price * article.quantity );
+    console.log(totalBasket);
+  return totalBasket.toFixed(2)
+  }
+
+  onToken = token => {
+    fetch("/charge", {
+      method: "POST",
+      body: JSON.stringify({
+        stripeData: token,
+        products: this.props.productsInBasket,
+      }),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "succeeded") {
+          console.log(data);
+          // dispatch a success
+        } else {
+          console.warn(data);
+          // dispatch an error
+        }
+      });
+  };
+
   render() {
-    let total = 0;
-    console.log(this.props)
+
     return (
       <div id="page_container" className="col-8 offset-2">
        <div className="titleBasket">My order </div>
@@ -61,13 +91,19 @@ class Basket extends Component {
               <td></td>
               <td></td>
               <td>Total</td>
-              <td>{this.props.productsInBasket.forEach((article) =>
-                total += article.min_price * article.quantity )
-              }{total.toFixed(2)}
+              <td>{this.totalBasket()}
                  €</td>
             </tr>
             </tfoot>
           </table>
+          <div className="App-intro">
+           <StripeCheckout
+             token={this.onToken}
+             amount={this.totalBasket()*100}
+             currency="EUR"
+             stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
+           />
+          </div>
       </div>
     )
   }}
