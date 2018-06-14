@@ -1,6 +1,11 @@
+
 const initialState = localStorage.getItem("cart")
   ? {productsInBasket : JSON.parse(localStorage.getItem("cart"))}
-  : {productsInBasket : []};
+  : {productsInBasket : [],
+     loggedIn:false,
+    name:"",
+    urlPic=""
+    };
 
 // const initialState = {
 //   productsInBasket : []
@@ -101,6 +106,16 @@ const BasketReducer = (state = initialState, action) => {
         ...state,
         productsInBasket: RemoveItem(state.productsInBasket,action.id)
       };
+
+      case 'LOGIN':
+        return {
+          ...state,loggedIn:action.loggedIn,name:action.name,urlPic:action.urlPic
+        };
+
+        case 'LOGOUT':
+          return {
+            ...state,loggedIn:action.loggedIn,name:action.name,urlPic:action.urlPic
+          };
 
     default:
       return state

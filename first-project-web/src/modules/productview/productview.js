@@ -3,21 +3,29 @@ import axios from 'axios';
 import {mapStateToProps} from './../../store/basket/selector.js'
 import {cartAction} from './../../store/basket/handlers.js'
 import {connect} from 'react-redux';
+import StarRatings from 'react-star-ratings';
 
 class ProductCard extends Component {
   constructor() {
     super()
     this.state = {
-      counter:1
+      counter:1,
+      disabledbtn:true,
+      rating:2.3,
     }
   }
 
   addone() {
-    this.setState({counter:this.state.counter + 1});
+    this.setState({counter:this.state.counter + 1, disabledbtn:false});
   }
 
   oneless() {
-    this.setState({counter:this.state.counter - 1});
+    if(this.state.counter==2) {
+      this.setState({counter:this.state.counter - 1, disabledbtn:true});
+    } else {
+      this.setState({counter:this.state.counter - 1});
+    }
+
   }
 
   render() {
@@ -52,9 +60,17 @@ class ProductCard extends Component {
             <hr></hr>
             <span className="price">{this.props.product.min_price} €</span>
             <p>Customer rating : {this.props.product.rating} /5</p>
-            <div><img src={urlImg} width="140px" alt={this.props.product.title}/></div>
+            {/* <div><img src={urlImg} width="140px" alt={this.props.product.title}/></div> */}
+            <StarRatings
+               rating={this.props.product.rating}
+               starRatedColor="orange"
+               starDimension="25px"
+               starSpacing="3px"
+               numberOfStars={5}
+               name='rating'
+             />
             <div>
-              <button className="btn-count" onClick={() => this.oneless()}>-</button>
+              <button className="btn-count" disabled={this.state.disabledbtn} onClick={() => this.oneless()}>-</button>
               {this.state.counter}
               <button className="btn-count" onClick={() => this.addone()}>+</button>
             </div>

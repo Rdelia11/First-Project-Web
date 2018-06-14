@@ -5,6 +5,24 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class ViewOneArticle extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      disabledbtn : true,
+    }
+  }
+
+  componentDidMount(){
+
+    if(this.props.article.quantity==1){
+      this.setState({disabledbtn : true})
+    } else {
+      this.setState({disabledbtn : false})
+    }
+  }
+
+
   render() {
      const url="https://www.decathlon.fr/media/"+this.props.article.image_path;
      console.log(this.props.article.id);
@@ -15,9 +33,32 @@ class ViewOneArticle extends Component {
         <td>{this.props.article.decathlon_id}</td>
         <td>{this.props.article.min_price} €</td>
         <td>
-          <button className="btn-count" onClick={ () => this.props.delqte(this.props.article.decathlon_id)}>-</button>
+          <button
+            className="btn-count"
+            disabled={this.state.disabledbtn}
+            id="minusbtn"
+            onClick={ () => {
+
+
+              if (this.props.article.quantity <= 2){
+                this.setState({disabledbtn : true})
+              }
+              this.props.delqte(this.props.article.decathlon_id)
+            }
+          }
+            >-</button>
           {this.props.article.quantity}
-          <button className="btn-count" onClick={ () => this.props.addqte(this.props.article.decathlon_id)}>+</button>
+
+          <button
+            className="btn-count"
+            onClick={ () => {
+
+              if (this.props.article.quantity >= 1){
+                this.setState({disabledbtn : false})
+              }
+              this.props.addqte(this.props.article.decathlon_id)
+            }
+            }>+</button>
         </td>
         <td><img src="./bin.png" alt="bin" width="15px" id="imgbin" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></img>
         </td>
