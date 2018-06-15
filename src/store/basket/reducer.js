@@ -15,7 +15,7 @@ const initialState = localStorage.getItem("cart")
 //   productsInBasket : []
 // }
 
-function storeData(key, value) {
+export function storeData(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
     return true; // All went well
