@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import StripeCheckout from "react-stripe-checkout";
 
+
 class ViewOneArticle extends Component {
   constructor() {
     super()
@@ -96,6 +97,7 @@ class Basket extends Component {
           console.log(data);
           // dispatch a success
         } else {
+
           console.warn(data);
           // dispatch an error
         }
@@ -138,12 +140,7 @@ class Basket extends Component {
             </tfoot>
           </table>
           <div className="App-intro">
-           <StripeCheckout
-             token={this.onToken}
-             amount={this.totalBasket()*100}
-             currency="EUR"
-             stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
-           />
+           <Link to="/checkout">Order Article</Link>
           </div>
 
       </div>
