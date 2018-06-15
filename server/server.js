@@ -33,6 +33,8 @@ function totalBasket(products){
 return totalBasket*100
 }
 
+app.use(express.static('public'));
+
 app.post("/charge", (request, result) => {
   console.log(request.body.products)
   // here we need to calculate the price to pay depending on request infos
