@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "node first-project-web/server/server.js",
-    "heroku-postbuild": "cd first-project-web && npm install && npm run build",
+    "heroku-postbuild": "npm install && npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
