@@ -10,6 +10,7 @@ import Basket from './../basket/basket.js'
 import Products from './../products/products.js'
 import ProductView from './../productview/productview.js'
 import Checkout from './../checkout/checkout.js'
+import ProductAR from './../productAR/productar.js'
 
 class LocalRouter extends Component {
   render() {
@@ -22,6 +23,7 @@ class LocalRouter extends Component {
           <Route path="/product/:productId" component={ProductView}/>
           <Route exact path="/basket" component={Basket}/>
           <Route exact path="/checkout" component={Checkout}/>
+          <Route path="/productar" component={ProductAR}/>
         </div>
       </Router>
     )
