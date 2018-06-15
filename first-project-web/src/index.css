@@ -177,6 +177,17 @@ border:none;
   width:210px;
 }
 
+.Delete{
+  background-color: red;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 9px;
+  color: white;
+  opacity: 0.8;
+  padding: 5px 5px;
+  margin:20px;
+}
+
 #container_ProductCard{
   width:100%;
   display:flex;

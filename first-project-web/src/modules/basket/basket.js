@@ -12,6 +12,7 @@ class ViewOneArticle extends Component {
 
     this.state = {
       disabledbtn : true,
+      productsInBasket : []
     }
   }
 
@@ -24,12 +25,13 @@ class ViewOneArticle extends Component {
     }
   }
 
-
   render() {
      const url="https://www.decathlon.fr/media/"+this.props.article.image_path;
      console.log(this.props.article.id);
     return (
       <tr>
+
+
         <td><img className="zoomImage" src={url} alt={this.props.article.title}/></td>
         <td><Link to={`/product/${this.props.article.id}`}>{this.props.article.title}</Link></td>
         <td>{this.props.article.decathlon_id}</td>
@@ -62,10 +64,12 @@ class ViewOneArticle extends Component {
             }
             }>+</button>
         </td>
-        <td><img src="./bin.png" alt="bin" width="15px" id="imgbin" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></img>
+        <td> <i class="far fa-trash-alt" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></i>
         </td>
         <td>{(this.props.article.min_price*this.props.article.quantity).toFixed(2)}</td>
+
       </tr>
+
     )
   }
 }
@@ -81,6 +85,8 @@ class Basket extends Component {
     console.log(totalBasket);
   return totalBasket.toFixed(2)
   }
+
+
 
   onToken = token => {
     fetch("/charge", {
@@ -138,6 +144,8 @@ class Basket extends Component {
             </tr>
             </tfoot>
           </table>
+
+          <button className="Delete" onClick={this.props.rmAll}> <i class="far fa-trash-alt"></i> Empty Basket</button>
           <div className="App-intro">
 
 

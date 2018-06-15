@@ -111,6 +111,12 @@ const BasketReducer = (state = initialState, action) => {
         productsInBasket: RemoveItem(state.productsInBasket,action.id)
       };
 
+      case 'REMOVE_ALL':
+        return {
+          ...state,
+          productsInBasket:[]
+        };
+
       case 'LOGIN':
         return {
           ...state,loggedIn:action.loggedIn,name:action.name,urlPic:action.urlPic
