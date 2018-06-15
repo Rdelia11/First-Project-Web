@@ -12,6 +12,7 @@ class ViewOneArticle extends Component {
 
     this.state = {
       disabledbtn : true,
+      productsInBasket : []
     }
   }
 
@@ -62,7 +63,7 @@ class ViewOneArticle extends Component {
             }
             }>+</button>
         </td>
-        <td><i class="far fa-trash-alt" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></i>
+        <td> <i class="far fa-trash-alt" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></i>
         </td>
         <td>{(this.props.article.min_price*this.props.article.quantity).toFixed(2)}</td>
       </tr>
@@ -138,6 +139,7 @@ class Basket extends Component {
             </tr>
             </tfoot>
           </table>
+          <button className="Delete" onClick={this.props.rmAll}> <i class="far fa-trash-alt"></i> Empty Basket</button>
           <div className="App-intro">
             <Link to="/checkout">Order Article</Link>
           </div>
