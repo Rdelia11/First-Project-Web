@@ -12,6 +12,19 @@ class Navbar extends Component{
     super(props);
   }
 
+  componentDidUpdate(){
+    console.log("didupdate")
+  }
+
+  onStorageEvent = (storageEvent) => {
+    if (storageEvent.key === "cart") {
+      console.log("storage event: " + storageEvent.key);
+      //forcer Navbar a faire un render
+      // this.forceUpdate();
+      document.location.reload();
+    }
+  }
+
   howmanyArticleInBasket(){
     let nbArticleInBasket = 0;
     this.props.productsInBasket.forEach(oneProduct => nbArticleInBasket += oneProduct.quantity);
@@ -28,6 +41,8 @@ class Navbar extends Component{
   }
 
   render (){
+    console.log("TEST NAME"+this.props.name)
+    window.addEventListener('storage', this.onStorageEvent);
     return(
       <div id="navbar" className="fixed-top">
         <div id="home">

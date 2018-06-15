@@ -1,14 +1,14 @@
 
 const initialState = localStorage.getItem("cart")
   ? {productsInBasket : JSON.parse(localStorage.getItem("cart")),
-  loggedIn:false,
- name:"",
- urlPic:""
-}
-  : {productsInBasket : [],
-     loggedIn:false,
+    loggedIn:false,
     name:"",
     urlPic:""
+    }
+  : {productsInBasket : [],
+     loggedIn:false,
+     name:"",
+     urlPic:""
     };
 
 // const initialState = {
@@ -20,7 +20,7 @@ function storeData(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
     return true; // All went well
   } catch (error) {
-    console.warn("something wrong happened", error);
+    console.warn("not able to store cart on localStorage", error);
     return false; // An error occured
   }
 }
