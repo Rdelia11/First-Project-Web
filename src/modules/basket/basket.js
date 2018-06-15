@@ -139,22 +139,7 @@ class Basket extends Component {
             </tfoot>
           </table>
           <div className="App-intro">
-
-
-              {this.props.loggedIn
-                ?
-           <StripeCheckout
-             token={this.onToken}
-             amount={this.totalBasket()*100}
-             currency="EUR"
-             stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
-           />:
-           <span><p>You must be logged in to checkout</p>
-           </span>
-
-           }
-
-
+            <Link to="/checkout">Order Article</Link>
           </div>
 
       </div>
