@@ -21,7 +21,7 @@
     "underscore": "^1.9.1"
   },
   "scripts": {
-    /* "start": "react-scripts start", */
+    "dev": "react-scripts start",
     "start": "node first-project-web/server/server.js",
     "heroku-postbuild": "cd first-project-web && npm install && npm run build",
     "build": "react-scripts build",
