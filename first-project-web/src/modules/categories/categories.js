@@ -17,10 +17,11 @@ class Categories extends Component {
     let sortedCategory = this.state.listCategories;
     if(this.state.sort === 'ASC'){
       sortedCategory = _.sortBy(this.state.listCategories, column);
-      this.setState({sort : 'DESC'});
+      console.log(sortedCategory);
+      this.setState({FilterView: sortedCategory, sort : 'DESC'});
     }else{
       sortedCategory = _.sortBy(this.state.listCategories, column).reverse();
-      this.setState({sort : 'ASC'});
+      this.setState({FilterView: sortedCategory, sort : 'ASC'});
     }
     this.setState({listCategories : sortedCategory})
   }
@@ -28,7 +29,7 @@ class Categories extends Component {
 
   componentDidMount(){
     axios.get('https://decath-product-api.herokuapp.com/categories')
-    .then((response) => this.setState({listCategories: response.data, FilterView: response.data}))
+    .then((response) => this.setState({listCategories: response.data, FilterView:response.data}))
   }
 
   // componentDidUpdate(prevProps, prevState){
@@ -49,25 +50,32 @@ class Categories extends Component {
     })
   }
 
-  hundleChange = (e) => {
+  handleChange = (e) => {
     let searchResult = [];
     console.log(e.target.value.length);
     if (e.target.value.length === 0) {
       return searchResult = this.state.listCategories;
     } else {
-      this.state.listCategories.filter(item => {
-        if (item.label.toUpperCase().includes(e.target.value.toUpperCase())) {
-          return searchResult.push(item);
-        }
-      })
+      this.state.listCategories
+      .filter(item => this.keepOnlyUpperCaseItem(item.label, e.target.value))
+      .forEach(item => searchResult.push(item));
     }
-    //console.log(e.target.value)
-    this.setState({FilterView : searchResult})
-
+    this.setState({FilterView : searchResult});
   }
 
+  keepOnlyUpperCaseItem = (labelProduct, inputValue) => {
+    return labelProduct.toUpperCase().includes(inputValue.toUpperCase())
+    ? labelProduct
+    : null
+  }
+
+
+
   render () {
+
+
     return (
+<<<<<<< HEAD
       <div id="page_container" className="col-10 offset-1">
         <h1 className="pb-3">Pick a category</h1>
         <form>
@@ -86,6 +94,26 @@ class Categories extends Component {
           </tbody>
         </table>
       </div>
+=======
+    <div id="page_container" className="col-10 offset-1">
+      <h1 className="pb-3">Pick a category</h1>
+      <form>
+        <input className="SearchBar" autoFocus type="text" placeholder="Search a category..." onChange={(e)=> this.handleChange(e)} >
+        </input>
+      </form>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col" onClick={this.sortBy.bind(this, "label")} className="clickableTh">Category name</th>
+            {/* <th>Category UUID</th> */}
+          </tr>
+        </thead>
+        <tbody>
+          {this.print1line()}
+        </tbody>
+      </table>
+    </div>
+>>>>>>> 7081cb7bafdbed8f03b32410614e82d6aa1bb6c6
     )
   }
 }

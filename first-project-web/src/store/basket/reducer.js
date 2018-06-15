@@ -1,48 +1,88 @@
-const initialState = {
-  productsInBasket : [{
-    title: "Corne chasse 14cm",
-    decathlon_id: 8282689,
-    min_price: 9.99,
-    quantity: 2,
-    image_path: "828/8282689/zoom_52fc3fd48aac4f30a127e90388958eb6.jpg",
-  },
-  {
-    title: "Corne chasse 16cm",
-    decathlon_id: 8282688,
-    min_price: 9.99,
-    quantity: 2,
-    image_path: "828/8282689/zoom_52fc3fd48aac4f30a127e90388958eb6.jpg",
-  },
-  {
-    title: "Corne chasse 16cm",
-    decathlon_id: 8282685,
-    min_price: 9.99,
-    quantity: 2,
-    image_path: "828/8282689/zoom_52fc3fd48aac4f30a127e90388958eb6.jpg",
+
+const initialState = localStorage.getItem("cart")
+  ? {productsInBasket : JSON.parse(localStorage.getItem("cart")),
+    loggedIn:false,
+    name:"",
+    urlPic:""
+    }
+  : {productsInBasket : [],
+     loggedIn:false,
+     name:"",
+     urlPic:""
+    };
+
+// const initialState = {
+//   productsInBasket : []
+// }
+
+function storeData(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true; // All went well
+  } catch (error) {
+    console.warn("not able to store cart on localStorage", error);
+    return false; // An error occured
   }
-]
 }
 
 function addOneItem(products, id) {
-  return products.map(
+  let newState = products.map(
     (oneProduct) =>
       oneProduct.decathlon_id === id
       ? {...oneProduct, quantity:oneProduct.quantity +1}
       : oneProduct
-  )
+  );
+
+  storeData("cart", newState);
+  return newState;
+}
+
+function addMoreQte(products, article, qte) {
+
+  let findItem = false;
+  let tabState=products.map(
+    function (oneProduct) {
+      if (oneProduct.decathlon_id === article.decathlon_id) {
+        findItem=true;
+        return {...oneProduct, quantity:oneProduct.quantity + qte}
+      } else {
+        return oneProduct
+      }
+    }
+  );
+  if (!findItem) {
+    tabState.push({
+      id: article.id,
+      title: article.title,
+      decathlon_id: article.decathlon_id,
+      min_price: article.min_price,
+      quantity: qte,
+      image_path: article.image_path
+    });
+  }
+  console.log(tabState);
+  storeData("cart", tabState);
+  return tabState;
 }
 
 function deleteOneItem(products, id) {
-  return products.map(
+  let newState = products.map(
     (oneProduct) =>
       oneProduct.decathlon_id === id
       ? {...oneProduct, quantity:oneProduct.quantity -1}
       : oneProduct
-  )
+    );
+
+    storeData("cart", newState);
+    return newState;
 }
 
 function RemoveItem(products, id) {
-  return products.filter(function(oneProduct){ return oneProduct.decathlon_id !== id });
+  let newState = products.filter(
+    function(oneProduct){ return oneProduct.decathlon_id !== id });
+
+    storeData("cart", newState);
+    return newState;
 }
 
 const BasketReducer = (state = initialState, action) => {
@@ -52,6 +92,12 @@ const BasketReducer = (state = initialState, action) => {
         ...state,
         productsInBasket: addOneItem(state.productsInBasket,action.id)
       };
+
+      case 'ADD_MORE_QUANTITY':
+        return {
+          ...state,
+          productsInBasket: addMoreQte(state.productsInBasket,action.product, action.quantity)
+        };
 
     case 'DEL_QUANTITY':
       return {
@@ -64,6 +110,16 @@ const BasketReducer = (state = initialState, action) => {
         ...state,
         productsInBasket: RemoveItem(state.productsInBasket,action.id)
       };
+
+      case 'LOGIN':
+        return {
+          ...state,loggedIn:action.loggedIn,name:action.name,urlPic:action.urlPic
+        };
+
+        case 'LOGOUT':
+          return {
+            ...state,loggedIn:action.loggedIn,name:action.name,urlPic:action.urlPic
+          };
 
     default:
       return state
