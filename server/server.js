@@ -1,6 +1,7 @@
 const express = require("express");
 const Stripe = require("stripe");
 const port = process.env.PORT || 8080;
+const path = require ("path");
 
 if (process.env.NODE_ENV !== "production") {
   /**
@@ -61,7 +62,7 @@ app.post("/charge", (request, result) => {
 });
 
 app.get('*', (request, result) => {
-  result.sendFile('./build/index.html')
+  result.sendFile(path.resolve('./build/index.html'))
 });
 
 app.listen(port,function(){
