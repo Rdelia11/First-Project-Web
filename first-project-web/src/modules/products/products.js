@@ -75,7 +75,7 @@ class Products extends Component {
 
             <div><Link to={`/product/${oneProduct.id}`} className="btn btn-outline-primary">See product</Link>
             <button className="btn btn-primary ml-2" onClick={() => this.props.addmoreqte(oneProduct,1)}>
-              <i className="fas fa-cart-plus"> Add</i>
+              <i className="fas fa-cart-plus"></i> Add
             </button>
             {/* <button className="btn btn-primary ml-2" onClick={() => this.props.addmoreqte(oneProduct,1)}>Add to basket</button> */}
           </div>
@@ -99,7 +99,7 @@ class Products extends Component {
     }
     this.setState({FilterView : searchResult});
   }
-  
+
   keepOnlyUpperCaseItem = (titleProduct, inputValue) => {
     return titleProduct.toUpperCase().includes(inputValue.toUpperCase())
     ? titleProduct
@@ -109,10 +109,10 @@ class Products extends Component {
 
   render () {
     return (
-      <div id="page_container">
-        <h1 className="body">Sports products</h1>
+      <div id="page_container_products">
+        <h1 className="pb-3">Sports products</h1>
         <form>
-          <input className="SearchBar" type="text" placeholder="Search a product..." onChange={(e)=> this.handleChange(e)} >
+          <input className="SearchBar" autoFocus type="text" placeholder="Search a product..." onChange={(e)=> this.handleChange(e)} >
           </input>
         </form>
         <div id="page_container" className="col-8 offset-2 products_container">

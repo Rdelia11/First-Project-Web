@@ -34,7 +34,7 @@ class Navbar extends Component{
     signOut=()=>{
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      console.log('User signed out.');
+      //console.log('User signed out.');
         store.dispatch({type:"LOGOUT",loggedIn:false,name:"",urlPic:""});
         window.location.reload();
     });
@@ -81,7 +81,7 @@ class Navbar extends Component{
   }
 }
 
-function GoogleButton(props){
+export function GoogleButton(props){
   return(
     <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="dark"></div>
   )

@@ -3,6 +3,8 @@ import {mapStateToProps} from './../../store/basket/selector.js'
 import {cartAction} from './../../store/basket/handlers.js'
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
+import StripeCheckout from "react-stripe-checkout";
+import {GoogleButton} from "../navbar/navbar";
 
 class ViewOneArticle extends Component {
   constructor() {
@@ -71,12 +73,41 @@ class ViewOneArticle extends Component {
 const ViewOneArticleConnected = connect(null, cartAction)(ViewOneArticle)
 
 class Basket extends Component {
+
+  totalBasket(){
+    let totalBasket = 0;
+  this.props.productsInBasket.forEach((article) =>
+    totalBasket += article.min_price * article.quantity );
+    console.log(totalBasket);
+  return totalBasket.toFixed(2)
+  }
+
+  onToken = token => {
+    fetch("/charge", {
+      method: "POST",
+      body: JSON.stringify({
+        stripeData: token,
+        products: this.props.productsInBasket,
+      }),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "succeeded") {
+          console.log(data);
+          // dispatch a success
+        } else {
+          console.warn(data);
+          // dispatch an error
+        }
+      });
+  };
+
   render() {
-    let total = 0;
-    console.log(this.props)
+
     return (
       <div id="page_container" className="col-8 offset-2">
-        <div className="titleBasket">My order </div>
+        <h1 className="pb-3">My order </h1>
         <table className="table">
           <thead className="tableHeader">
             <tr className="tableRow">
@@ -102,13 +133,30 @@ class Basket extends Component {
               <td></td>
               <td></td>
               <td>Total</td>
-              <td>{this.props.productsInBasket.forEach((article) =>
-              total += article.min_price * article.quantity )
-              }{total.toFixed(2)}
-              €</td>
+              <td>{this.totalBasket()}
+                 €</td>
             </tr>
-          </tfoot>
-        </table>
+            </tfoot>
+          </table>
+          <div className="App-intro">
+
+
+              {this.props.loggedIn
+                ?
+           <StripeCheckout
+             token={this.onToken}
+             amount={this.totalBasket()*100}
+             currency="EUR"
+             stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
+           />:
+           <span><p>You must be logged in to checkout</p>
+           </span>
+
+           }
+
+
+          </div>
+
       </div>
     )
   }}

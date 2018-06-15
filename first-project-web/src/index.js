@@ -24,8 +24,10 @@ window.googleConnectCallback = function(googleUser) {
 window.onscroll = function(){
   if(window.pageYOffset > 50){
     window.document.querySelector("#navbar").style="background-color:rgba(0,130,195,0.9);box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, .2);";
+    window.document.getElementById("topButton").style="opacity:1";
   }else{
     window.document.querySelector("#navbar").style="background-color:rgba(0,130,195,1);box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, .0);";
+    window.document.getElementById("topButton").style="opacity:0";
   }
 }
 
