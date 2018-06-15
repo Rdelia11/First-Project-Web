@@ -15,6 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         <LocalRouter />
+        <button onClick={function(){document.documentElement.scrollTop = 0}} id="topButton" className="topButton"><i class="fas fa-arrow-up"></i></button>
       </div>
     );
   }

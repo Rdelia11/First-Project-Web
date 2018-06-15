@@ -78,13 +78,13 @@ class Categories extends Component {
     <div id="page_container" className="col-10 offset-1">
       <h1 className="pb-3">Pick a category</h1>
       <form>
-        <input className="SearchBar" type="text" placeholder="Search a category..." onChange={(e)=> this.handleChange(e)} >
+        <input className="SearchBar" autoFocus type="text" placeholder="Search a category..." onChange={(e)=> this.handleChange(e)} >
         </input>
       </form>
       <table className="table">
         <thead>
           <tr>
-            <th scope="col" onClick={this.sortBy.bind(this, "label")}>Category name</th>
+            <th scope="col" onClick={this.sortBy.bind(this, "label")} className="clickableTh">Category name</th>
             {/* <th>Category UUID</th> */}
           </tr>
         </thead>

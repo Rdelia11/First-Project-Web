@@ -17,12 +17,16 @@ body {
   background-image:url("https://nameless-cliffs-89719.herokuapp.com/images/logo.png");
   background-repeat:no-repeat;
   background-position:center;
-  background-size:8%;
+  background-size:100px;
 
 }
 
 #navbar a{
   color:white;
+}
+
+#navbar a:hover{
+  color:#ebebeb;
 }
 
 .bottom-right {
@@ -79,7 +83,7 @@ body {
   color:white;
   width:200px;
   text-align:right;
-    display:none;
+  display:none;
 }
 
 #connected{
@@ -90,6 +94,10 @@ body {
   padding-top:80px;
 }
 
+#page_container_products{
+  background-color:#ebebeb;
+  padding-top:80px;
+}
 
 .SearchBar{
   margin: 20px;
@@ -102,6 +110,7 @@ body {
 }
 
 .table{
+  margin-top:30px;
 }
 
 .tableHeader{
@@ -124,13 +133,10 @@ body {
 }
 
 .card{
-
-
   border:solid black 1 px;
   padding-bottom:30px;
   padding-top: 0;
   margin : 5px;
-
 }
 
 .card-section {
@@ -147,6 +153,24 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.topButton{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  opacity:0;
+  border-radius: 15px;
+  color:white;
+  background-color:#0082C3;
+  border:none;
+}
+
+
+.topButton:hover {
+background-color:#04689A;;
+cursor:pointer;
+border:none;
 }
 
 .imgcat{
@@ -205,20 +229,22 @@ tr:hover{
   justify-content: flex-end;
 }
 .price{
-  border:1px lightgrey solid;
+
   background-color: yellow;
   text-align: right;
   top:0;
   padding-left:2px;
   padding-top: 2px;
-  font-size:17px;
+  font-size:18px;
+  font-weight: 600;
 }
 
 .price_crossed {
-  border:1px lightgrey solid;
+  color:white;
   background-color: red;
   adding:3px;
-  font-size:17px;
+  font-size:18px;
+  font-weight:600;
 }
 
 .striketext{
@@ -241,6 +267,17 @@ tr:hover{
   border-color:#0082C3;
 }
 
+.clickableTh{
+  cursor:pointer;
+}
+
+input{
+  padding:5px 5px 5px 40px;
+  background-image: url(/pictures/searchicon.png);
+  background-repeat: no-repeat;
+  background-position: 10px 6px;
+}
+
 
 .btn-primary:hover{
   background-color:#04689A;
@@ -258,9 +295,16 @@ tr:hover{
 }
 
 .btn-count {
+  border-radius: 5px;
   width:30px;
   margin-left:10px;
   margin-right:10px;
+}
+
+.btn-count:hover {
+background-color:#efefef;
+cursor:pointer;
+
 }
 
 .urlPic{
