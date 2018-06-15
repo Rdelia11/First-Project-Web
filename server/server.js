@@ -33,7 +33,7 @@ function totalBasket(products){
 return totalBasket*100
 }
 
-app.use(express.static('public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 app.post("/charge", (request, result) => {
   console.log(request.body.products)
