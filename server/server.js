@@ -33,7 +33,8 @@ function totalBasket(products){
 return totalBasket*100
 }
 
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/static',express.static('build/static'));
+
 
 app.post("/charge", (request, result) => {
   console.log(request.body.products)
@@ -57,6 +58,10 @@ app.post("/charge", (request, result) => {
     )
     .then(charge => result.json(charge))
     .catch(error => result.status(500).send(error))
+});
+
+app.get('*', (request, result) => {
+  result.sendFile('./build/index.html')
 });
 
 app.listen(port,function(){
