@@ -20,7 +20,7 @@ class ProductAR extends Component {
 
         <a-text value="Decathlon is hiring ... come and join us !" color="#000"
         position="3 0.3 -5" scale="1.5 1.5 1.5" rotation="0 90 0"></a-text>
-
+        
       </a-scene>
     )
   }
