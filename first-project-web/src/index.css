@@ -1,0 +1,347 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  /* background-image:url("/pictures/test.jpg"); */
+  background-repeat:no-repeat;
+}
+
+#navbar{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  height: 50px;
+  background-color: #0082C3;
+  background-image:url("https://nameless-cliffs-89719.herokuapp.com/images/logo.png");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:100px;
+
+}
+
+#navbar a{
+  color:white;
+}
+
+#navbar a:hover{
+  color:#ebebeb;
+}
+
+.bottom-right {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  right: 22px;
+}
+
+#home{
+  padding:15px 15px 15px 35px;
+  width:50px;
+  color:white;
+  font-size:1.5em;
+}
+
+#home:hover{
+  cursor:pointer;
+}
+
+#logo{
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-right:10px;
+  padding-left:160px;
+}
+
+#connectButton{
+  padding:15px;
+  width:auto;
+}
+
+#cart{
+  padding:15px 35px 15px 15px;
+  width:80px;
+  color:white;
+  font-size:1.5em;
+}
+
+#cart:hover{
+  cursor:pointer;
+}
+
+#container{
+  width:auto;
+  display:flex;
+}
+
+#logged{
+  color:white;
+  width:200px;
+  text-align:right;
+  display:none;
+}
+
+#connected{
+  width:200px;
+}
+
+#page_container{
+  padding-top:80px;
+}
+
+#page_container_products{
+  background-color:#ebebeb;
+  padding-top:80px;
+}
+
+.SearchBar{
+  margin: 20px;
+}
+
+.titleBasket{
+  height: 60px;
+  font-weight:bold;
+  font-size: 25px;
+}
+
+.table{
+  margin-top:30px;
+}
+
+.tableHeader{
+  font-weight: bold;
+}
+
+.tableFoot{
+  font-weight: bold;
+  font-style: italic;
+}
+
+.zoomImage{
+   width:20px;
+}
+
+.zoomImage:hover{
+  transform: scale(2.3);
+  border:solid white 1px;
+  border-radius: 12px;
+}
+
+.card{
+  border:solid black 1 px;
+  padding-bottom:30px;
+  padding-top: 0;
+  margin : 5px;
+}
+
+.card-section {
+  margin:10px;
+  width:250px;
+  height:500px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.products_container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.topButton{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  opacity:0;
+  border-radius: 15px;
+  color:white;
+  background-color:#0082C3;
+  border:none;
+}
+
+
+.topButton:hover {
+background-color:#04689A;;
+cursor:pointer;
+border:none;
+}
+
+.imgcat{
+  width:210px;
+}
+
+#container_ProductCard{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+#child_image{
+  padding:25px;
+  min-width:25%;
+}
+
+#child_blocInfo{
+  padding:25px;
+  text-align:left;
+  max-width:40%;
+  min-width:25%;
+}
+
+a{
+  color:#0082C3;
+}
+
+#logout{
+  color:white;
+
+}
+
+
+
+tr{
+  transition-property: all;
+  transition-duration: 0.5s;
+
+
+}
+
+tr:hover{
+  background-color:rgba(0,130,195,0.1);
+
+}
+
+.btn{
+  padding:10px;
+}
+
+.price_contain{
+  display:flex;
+  justify-content: flex-end;
+}
+.price{
+
+  background-color: yellow;
+  text-align: right;
+  top:0;
+  padding-left:2px;
+  padding-top: 2px;
+  font-size:18px;
+  font-weight: 600;
+}
+
+.price_crossed {
+  color:white;
+  background-color: red;
+  adding:3px;
+  font-size:18px;
+  font-weight:600;
+}
+
+.striketext{
+  font-size: 10px;
+  text-decoration: line-through;
+}
+
+.reduction{
+  font-size: 12px;
+  margin-left:5px;
+  background-color: #7FFF00;
+}
+
+#imgbin{
+  cursor:pointer;
+}
+
+.btn-primary{
+  background-color:#0082C3;
+  border-color:#0082C3;
+}
+
+.clickableTh{
+  cursor:pointer;
+}
+
+input{
+  padding:5px 5px 5px 40px;
+  background-image: url(/pictures/searchicon.png);
+  background-repeat: no-repeat;
+  background-position: 10px 6px;
+}
+
+
+.btn-primary:hover{
+  background-color:#04689A;
+}
+
+.btn-outline-primary{
+  border-color:#0082C3;
+  color:#0082C3;
+}
+
+.btn-outline-primary:hover{
+  background-color: #0082C3;
+  border-color:#0082C3;
+  color:white;
+}
+
+.btn-count {
+  border-radius: 5px;
+  width:30px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.btn-count:hover {
+background-color:#efefef;
+cursor:pointer;
+
+}
+
+.urlPic{
+  border-radius: 20px;
+  margin-left:20px;
+
+  box-shadow:2px 2px 6px 1px rgba(0, 0, 0, .2);
+}
+
+h1{
+  font-family: 'Roboto Condensed bold italic', sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-style: italic;
+  font-size:2em;
+}
+
+h2{
+  font-family: 'Roboto Condensed bold italic', sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-style: italic;
+  font-size:1.8em;
+}
+
+h3{
+  font-family: 'Roboto Condensed bold italic', sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-style: italic;
+  font-size:1.6em;
+}
+
+h4{
+  font-family: 'Roboto Condensed bold italic', sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-style: italic;
+  font-size:1.4em;
+}
