@@ -62,7 +62,7 @@ class ViewOneArticle extends Component {
             }
             }>+</button>
         </td>
-        <td><img src="./bin.png" alt="bin" width="15px" id="imgbin" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></img>
+        <td><i class="far fa-trash-alt" onClick={ () => this.props.rmitem(this.props.article.decathlon_id)}></i>
         </td>
         <td>{(this.props.article.min_price*this.props.article.quantity).toFixed(2)}</td>
       </tr>
